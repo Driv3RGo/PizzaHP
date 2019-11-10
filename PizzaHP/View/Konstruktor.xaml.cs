@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace PizzaHP
+namespace PizzaHP.View
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Логика взаимодействия для Konstruktor.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class Konstruktor : Page
     {
-        public MainWindow()
+        public Konstruktor()
         {
             InitializeComponent();
         }

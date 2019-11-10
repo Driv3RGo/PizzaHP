@@ -1,0 +1,104 @@
+﻿<Page x:Class="PizzaHP.View.Konstruktor"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:PizzaHP.View"
+      mc:Ignorable="d" 
+       d:DesignHeight="450" d:DesignWidth="800"
+      Title="Konstruktor">
+
+	<Grid Background="White">
+		<Grid>
+			<Grid.Background>
+				<ImageBrush Opacity="0.4" ImageSource="/PizzaHP;component/icons/Фон.jpg"/>
+			</Grid.Background>
+			<Grid.RowDefinitions>
+				<RowDefinition Height="59*"></RowDefinition>
+				<RowDefinition Height="85"></RowDefinition>
+				<RowDefinition Height="253*"></RowDefinition>
+				<RowDefinition Height="98*"/>
+			</Grid.RowDefinitions>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="620*"></ColumnDefinition>
+				<ColumnDefinition Width="480*"></ColumnDefinition>
+			</Grid.ColumnDefinitions>
+			<Label Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" Content="Конструктор пиццы" Margin="10,5,0,0" FontSize="36" FontWeight="Bold" FontFamily="Arial Rounded MT Bold" Background="Transparent" BorderBrush="Black"/>
+			<Image Grid.Column="1" Grid.Row="1" Grid.RowSpan="2" Margin="10,10,10,10" Source="/PizzaHP;component/icons/Основа конструктора.PNG"/>
+			<Button Grid.Column="1" Grid.Row="1" x:Name="Restart" Background="{x:Null}" FontSize="16" FontFamily="Century Gothic" Foreground="White" BorderBrush="{x:Null}" FontWeight="Bold" Opacity="0.9" Margin="230,0,0,20" Height="25" Width="108">
+				<StackPanel Orientation="Horizontal">
+					<TextBlock Text="Заново" Foreground="Black" FontSize="14"/>
+					<Image Margin="3,0,0,0" Height="15" Width="15" RenderTransformOrigin="0.5,0.5" Source="/PizzaHP;component/icons/Заново.png">
+						<Image.RenderTransform>
+							<TransformGroup>
+								<ScaleTransform/>
+								<SkewTransform/>
+								<RotateTransform Angle="90"/>
+								<TranslateTransform/>
+							</TransformGroup>
+						</Image.RenderTransform>
+					</Image>
+				</StackPanel>
+			</Button>
+			<Button Grid.Column="1" Grid.Row="3" Content="Заказать" BorderBrush="#FF2BFF00" Background="{x:Null}" FontSize="20" FontWeight="Bold" Margin="293,10,10,10" Height="50" Width="150"/>
+			<Label Grid.Column="1" Grid.Row="3" Content="Стоимость:&#xD;&#xA;Вес:  " FontSize="20" FontWeight="Bold" Background="Transparent" Margin="0,0,150,0" Width="230" Height="80"/>
+			<Grid Grid.Column="0" Grid.Row="1" Margin="15,0,0,0">
+				<Grid.Background>
+					<SolidColorBrush Opacity="0.3"/>
+				</Grid.Background>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition></ColumnDefinition>
+					<ColumnDefinition></ColumnDefinition>
+					<ColumnDefinition></ColumnDefinition>
+					<ColumnDefinition></ColumnDefinition>
+					<ColumnDefinition></ColumnDefinition>
+					<ColumnDefinition></ColumnDefinition>
+					<ColumnDefinition></ColumnDefinition>
+				</Grid.ColumnDefinitions>
+				<Button x:Name="Sauce" Grid.Column="0">
+					<StackPanel>
+						<Image Stretch="Fill" Height="45" Width="50" Source="/PizzaHP;component/icons/konstruktor/Соус.png"/>
+						<TextBlock Text="Соус" Margin="0,0,0,0" Foreground="Black" FontSize="14" FontWeight="Bold" TextAlignment="Center"/>
+					</StackPanel>
+				</Button>
+				<Button x:Name="Cheese" Grid.Column="1">
+					<StackPanel>
+						<Image Stretch="Fill" Height="45" Width="50" Source="/PizzaHP;component/icons/konstruktor/Сыр.png"/>
+						<TextBlock Text="Сыр" Margin="0,0,0,0" Foreground="Black" FontSize="14" FontWeight="Bold" TextAlignment="Center"/>
+					</StackPanel>
+				</Button>
+				<Button x:Name="Meat" Grid.Column="2">
+					<StackPanel>
+						<Image Stretch="Fill" Height="45" Width="50" Source="/PizzaHP;component/icons/konstruktor/Мясо.png"/>
+						<TextBlock Text="Мясо" Margin="0,0,0,0" Foreground="Black" FontSize="14" FontWeight="Bold" TextAlignment="Center"/>
+					</StackPanel>
+				</Button>
+				<Button x:Name="Fish" Grid.Column="3">
+					<StackPanel>
+						<Image Stretch="Fill" Height="45" Width="50" Source="/PizzaHP;component/icons/konstruktor/Рыба.png"/>
+						<TextBlock Text="Рыба" Margin="0,0,0,0" Foreground="Black" FontSize="14" FontWeight="Bold" TextAlignment="Center"/>
+					</StackPanel>
+				</Button>
+				<Button x:Name="Grib" Grid.Column="4">
+					<StackPanel>
+						<Image Stretch="Fill" Height="45" Width="50" Source="/PizzaHP;component/icons/konstruktor/Гриб.png"/>
+						<TextBlock Text="Грибы" Margin="0,0,0,0" Foreground="Black" FontSize="14" FontWeight="Bold" TextAlignment="Center"/>
+					</StackPanel>
+				</Button>
+				<Button x:Name="Tomato" Grid.Column="5">
+					<StackPanel>
+						<Image Stretch="Fill" Height="45" Width="50" Source="/PizzaHP;component/icons/konstruktor/Овощи.png"/>
+						<TextBlock Text="Овощи" Margin="0,0,0,0" Foreground="Black" FontSize="14" FontWeight="Bold" TextAlignment="Center"/>
+					</StackPanel>
+				</Button>
+				<Button x:Name="Salt" Grid.Column="6">
+					<StackPanel>
+						<Image Stretch="Fill" Height="45" Width="50" Source="/PizzaHP;component/icons/konstruktor/Специи.png"/>
+						<TextBlock Text="Специи" Margin="0,0,0,0" Foreground="Black" FontSize="14" FontWeight="Bold" TextAlignment="Center"/>
+					</StackPanel>
+				</Button>
+			</Grid>
+			<ListBox Grid.Column="0" Grid.Row="2" Grid.RowSpan="2" Background="{x:Null}" BorderBrush="{x:Null}"/>
+		</Grid>
+	</Grid>
+</Page>

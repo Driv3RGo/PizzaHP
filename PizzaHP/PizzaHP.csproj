@@ -55,7 +55,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="MainWindow.xaml">
+    <Page Include="View\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -63,12 +63,33 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
+    <Compile Include="View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="View\Katalog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Konstruktor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Korzina.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="View\Katalog.xaml.cs">
+      <DependentUpon>Katalog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Konstruktor.xaml.cs">
+      <DependentUpon>Konstruktor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Korzina.xaml.cs">
+      <DependentUpon>Korzina.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -93,6 +114,39 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons\Каталог.png" />
+    <Resource Include="icons\Конструктор.png" />
+    <Resource Include="icons\Корзина.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons\Фон.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons\Грустный смайлик.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons\Заново.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons\Основа конструктора.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons\Личный кабинет.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons\konstruktor\Гриб.png" />
+    <Resource Include="icons\konstruktor\Мясо.png" />
+    <Resource Include="icons\konstruktor\Овощи.png" />
+    <Resource Include="icons\konstruktor\Рыба.png" />
+    <Resource Include="icons\konstruktor\Соус.png" />
+    <Resource Include="icons\konstruktor\Специи.png" />
+    <Resource Include="icons\konstruktor\Сыр.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Models\" />
+    <Folder Include="ViewModels\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
