@@ -36,6 +36,12 @@ namespace PizzaHP.View
             this.Close();
         }
 
+        private void Login_Click(object sender, RoutedEventArgs e)          //Кнопка личный кабинет
+        {
+            LoginScreen ls = new LoginScreen();
+            ls.Show();
+        }
+
         private void Katalog_Click(object sender, RoutedEventArgs e)        //Конпка каталог
         {
             Grid1.Visibility = Visibility.Visible;

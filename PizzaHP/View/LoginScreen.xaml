@@ -4,17 +4,28 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PizzaHP.View"
-        mc:Ignorable="d"
-         Title="Login" Height="319" Width="300" FontSize="14" Background="#FFF4A01B">
-	<Border Background="#2e3137" CornerRadius="20" Margin="20">
-		<StackPanel Margin="20">
-			<Label Content="Login" Foreground="White" FontSize="25" HorizontalAlignment="Center"/>
-			<Separator></Separator>
-			<Label Content="Username" Foreground="White"/>
-			<TextBox Name="txtUsername" Foreground="White" FontSize="18" Background="#FF545D6A"/>
-			<Label Content="Password" Foreground="White"/>
-			<PasswordBox Name="txtPassword" Background="#545d6a" Foreground="White" FontSize="18"/>
-			<Button Name="Enter" Content="Enter" Margin="60 10" Background="#545d6a" Foreground="White" FontSize="18"/>
-		</StackPanel>
-	</Border>
+        mc:Ignorable="d" MouseLeftButtonDown="Window_MouseLeftButtonDown"
+         Title="Login" Height="319" Width="300" FontSize="14" Background="#FFF4A01B" HorizontalContentAlignment="Center" WindowStyle="None">
+	<Grid>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition/>
+			<ColumnDefinition Width="26"/>
+		</Grid.ColumnDefinitions>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="26"></RowDefinition>
+			<RowDefinition/>
+		</Grid.RowDefinitions>
+		<Button Grid.Column="1" Content="X" FontSize="20" FontWeight="Bold" FontFamily="Century Gothic" Background="{x:Null}" BorderBrush="White" Foreground="White" Click="Button_Click"/>
+		<Border Grid.Row="1" Background="#2e3137" CornerRadius="20" Margin="20,20.2,19.6,19.8" Grid.ColumnSpan="2">
+			<StackPanel Margin="20">
+				<Label Content="Login" Foreground="White" FontSize="25" HorizontalAlignment="Center"/>
+				<Separator></Separator>
+				<Label Content="Username" Foreground="White"/>
+				<TextBox Name="txtUsername" Foreground="White" FontSize="18" Background="#FF545D6A"/>
+				<Label Content="Password" Foreground="White"/>
+				<PasswordBox Name="txtPassword" Background="#545d6a" Foreground="White" FontSize="18"/>
+				<Button Name="Enter" Content="Enter" Margin="60 10" Background="#545d6a" Foreground="White" FontSize="18"/>
+			</StackPanel>
+		</Border>
+	</Grid>
 </Window>

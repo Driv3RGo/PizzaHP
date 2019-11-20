@@ -53,7 +53,7 @@
 			<Grid.Background>
 				<SolidColorBrush Color="Black" Opacity="0.9"/>
 			</Grid.Background>
-			<Button Grid.Column="0" x:Name="Input" Margin="10,10,5,9" Background="{x:Null}" BorderBrush="{x:Null}">
+			<Button Grid.Column="0" x:Name="Input" Margin="10,10,5,9" Background="{x:Null}" BorderBrush="{x:Null}" Click="Login_Click">
 				<StackPanel Orientation="Horizontal">
 					<Image Source="/PizzaHP;component/icons/Личный кабинет.png"/>
 					<TextBlock Text="Личный кабинет" Margin="5,5,0,5" FontWeight="Bold" Foreground="White"/>
