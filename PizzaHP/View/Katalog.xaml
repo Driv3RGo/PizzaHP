@@ -11,42 +11,87 @@
 	<Grid Background="White">
 		<Grid>
 			<Grid.Background>
-				<ImageBrush ImageSource="/PizzaHP;component/icons/Фон.jpg" Opacity="0.4"/>
+				<ImageBrush ImageSource="/PizzaHP;component/icons/Фон.jpg" Opacity="0.3"/>
 			</Grid.Background>
 			<Grid.RowDefinitions>
 				<RowDefinition Height="80*"></RowDefinition>
 				<RowDefinition Height="421*"></RowDefinition>
 			</Grid.RowDefinitions>
 			<Grid.ColumnDefinitions>
-				<ColumnDefinition/>
-				<ColumnDefinition Width="3*"></ColumnDefinition>
+				<ColumnDefinition Width="11*"/>
+				<ColumnDefinition Width="29*"/>
 			</Grid.ColumnDefinitions>
-			<Label Grid.Row="0" Grid.ColumnSpan="2" Content="Пиццы" Margin="10,10,7,0" FontSize="36" FontWeight="Bold" FontFamily="Arial Rounded MT Bold" Background="Transparent" BorderBrush="Black"/>
-			<ListBox Grid.Row="1" ItemsSource="{Binding Path=allProduct}" BorderBrush="{x:Null}" Background="{x:Null}">
+			<Border Grid.Row="0" Grid.Column="0" BorderThickness="1" BorderBrush="Black">
+				<Label Content="Пиццы" FontSize="36" FontWeight="Bold" FontFamily="Arial Rounded MT Bold" Background="Transparent" BorderBrush="Black" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+			</Border>
+			<Border Grid.Row="0" Grid.Column="1" BorderThickness="1" BorderBrush="Black">
+				<Label Content="Информация о пицце" FontSize="28" FontWeight="Bold" FontFamily="Arial Rounded MT Bold" Background="Transparent" BorderBrush="Black" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+			</Border>
+			<ListBox Grid.Row="1" ItemsSource="{Binding Path=AllProduct}" SelectedItem="{Binding Path=SelectProduct, Mode=TwoWay}" BorderBrush="{x:Null}" Background="{x:Null}" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
 				<ListBox.ItemTemplate>
 					<DataTemplate>
-						<Grid HorizontalAlignment="Stretch">
-							<Grid.ColumnDefinitions>
-								<ColumnDefinition Width="100"/>
-								<ColumnDefinition Width="*"/>
-							</Grid.ColumnDefinitions>
-							<Image Width="100" Height="100" Grid.Column="0" Source="/PizzaHP;component/icons/Основа конструктора.PNG"></Image>
-							<Grid Grid.Column="1">
-								<Grid.RowDefinitions>
-									<RowDefinition/>
-									<RowDefinition/>
-								</Grid.RowDefinitions>
-								<TextBlock Grid.Row="0" FontWeight="Bold" Text="{Binding Path=Name}" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-								<StackPanel Grid.Row="1" Orientation="Horizontal">
-									<TextBlock Text="Цена: " FontWeight="Bold"/>
-									<TextBlock Text="{Binding Path=Price}" FontStyle="Italic" FontWeight="Bold"/>
-									<TextBlock Text=" ₽" FontWeight="Bold" FontSize="14"/>
-								</StackPanel>
+						<Border Margin="5" BorderThickness="1" BorderBrush="SteelBlue" CornerRadius="4" Width="260">
+							<Grid HorizontalAlignment="Stretch">
+								<Grid.ColumnDefinitions>
+									<ColumnDefinition Width="100"/>
+									<ColumnDefinition Width="*"/>
+								</Grid.ColumnDefinitions>
+								<Image Width="90" Height="90" Grid.Column="0" Source="{Binding Path=Picture}"/>
+								<Grid Grid.Column="1">
+									<Grid.RowDefinitions>
+										<RowDefinition/>
+										<RowDefinition/>
+									</Grid.RowDefinitions>
+									<TextBlock Grid.Row="0" FontWeight="Bold" Text="{Binding Path=Name}" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+									<StackPanel Grid.Row="1" Orientation="Horizontal">
+										<TextBlock Text="Цена: " FontWeight="Bold"/>
+										<TextBlock Text="{Binding Path=Price}" FontStyle="Italic" FontWeight="Bold"/>
+										<TextBlock Text=" ₽" FontWeight="Bold" FontSize="14"/>
+									</StackPanel>
+								</Grid>
 							</Grid>
-						</Grid>
+						</Border>
 					</DataTemplate>
 				</ListBox.ItemTemplate>
 			</ListBox>
+			<Grid Grid.Row="1" Grid.Column="1" DataContext="{Binding Path=SelectProduct}" Opacity="{Binding Path=GridOpacity, Mode=TwoWay}">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+				</Grid.ColumnDefinitions>
+				<Image Grid.Column="0" Source="{Binding Path=Picture}"/>
+				<Grid Grid.Column="1">
+					<Grid.RowDefinitions>
+						<RowDefinition Height="150*"/>
+						<RowDefinition Height="40*"/>
+					</Grid.RowDefinitions>
+					<StackPanel Grid.Row="0" Margin="0,0,0,6.6">
+						<TextBlock Text="{Binding Path=Name}" FontSize="36" FontWeight="Bold" HorizontalAlignment="Center"/>
+						<StackPanel Orientation="Horizontal">
+							<TextBlock FontSize="10"/>
+							<TextBlock Text="Размер: " FontSize="20" FontWeight="Bold"/>
+							<TextBlock Text="{Binding Path=Size}" FontSize="20"/>
+							<TextBlock Text=" см" FontSize="20"/>
+						</StackPanel>
+						<TextBlock FontSize="10"/>
+						<StackPanel Orientation="Horizontal">
+							<TextBlock Text="Цена: " FontSize="20" FontWeight="Bold"/>
+							<TextBlock Text="{Binding Path=Price}" FontSize="20"/>
+							<TextBlock Text=" ₽" FontSize="20"/>
+						</StackPanel>
+						<TextBlock FontSize="10"/>
+						<TextBlock Text="Состав:" FontSize="20" FontWeight="Bold"/>
+						<TextBlock Text="{Binding Path=Ing}" FontSize="20" TextWrapping="Wrap"/>
+					</StackPanel>
+					<Grid Grid.Row="1">
+						<Button FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" Background="{x:Null}" FontWeight="Bold" BorderBrush="{x:Null}">
+							<Border Margin="5" BorderThickness="1" CornerRadius="20" Background="#FFFF6E00">
+								<TextBlock Padding="40,5,40,5" Text="В корзину" Foreground="White"/>
+							</Border>
+						</Button>
+					</Grid>
+				</Grid>
+			</Grid>
 		</Grid>
 	</Grid>
 </Page>

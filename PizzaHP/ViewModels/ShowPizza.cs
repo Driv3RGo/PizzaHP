@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,22 +7,43 @@ using PizzaHP.Models;
 
 namespace PizzaHP.ViewModels
 {
-    public class ShowPizza : INotifyPropertyChanged
+    public class ShowPizza : Base
     {
-        PizzaContext db;
-        public List<Product> allProduct { get; set; }
+        private PizzaContext db;
+        private ProductViewModel selectedproduct;
+        public List<ProductViewModel> AllProduct { get; set; }
+
+        private double _gridOpacity = 0.0;
+        public double GridOpacity
+        {
+            get
+            {
+                return _gridOpacity;
+            }
+            set
+            {
+                _gridOpacity = value;
+                OnPropertyChanged("GridOpacity");
+            }
+        }
 
         public ShowPizza()
         {
             db = new PizzaContext();
-            allProduct = db.Product.ToList();
+            AllProduct = db.Product.ToList().Select(i => new ProductViewModel(i)).ToList();
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
-        void OnPropertyChanged(string propertyName)
+        public ProductViewModel SelectProduct
         {
-            if (PropertyChanged != null)
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            get
+            {
+                return selectedproduct;
+            }
+            set
+            {
+                selectedproduct = value;
+                OnPropertyChanged("SelectProduct");
+            }
         }
     }
 }

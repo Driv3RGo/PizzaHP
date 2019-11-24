@@ -79,16 +79,20 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Models\Entities\Client.cs" />
-    <Compile Include="Models\Entities\Composition.cs" />
-    <Compile Include="Models\Entities\Ingredient.cs" />
-    <Compile Include="Models\Entities\Kategori.cs" />
-    <Compile Include="Models\Entities\Order.cs" />
-    <Compile Include="Models\Entities\Order_line.cs" />
+    <Compile Include="Models\Client.cs" />
+    <Compile Include="Models\Composition.cs" />
+    <Compile Include="Models\Ingredient.cs" />
+    <Compile Include="Models\Kategori.cs" />
+    <Compile Include="Models\Order.cs" />
+    <Compile Include="Models\Order_line.cs" />
     <Compile Include="Models\PizzaContext.cs" />
-    <Compile Include="Models\Entities\Product.cs" />
-    <Compile Include="Models\Entities\Staff.cs" />
-    <Compile Include="Models\Entities\Status.cs" />
+    <Compile Include="Models\Product.cs" />
+    <Compile Include="Models\Staff.cs" />
+    <Compile Include="Models\Status.cs" />
+    <Compile Include="Help\RelayCommand.cs" />
+    <Compile Include="ViewModels\Base.cs" />
+    <Compile Include="ViewModels\BuildingPizza.cs" />
+    <Compile Include="ViewModels\ProductViewModel.cs" />
     <Compile Include="ViewModels\ShowPizza.cs" />
     <Compile Include="View\LoginScreen.xaml.cs">
       <DependentUpon>LoginScreen.xaml</DependentUpon>
@@ -176,6 +180,78 @@
     <Resource Include="icons\konstruktor\Сыр.png" />
   </ItemGroup>
   <ItemGroup />
+  <ItemGroup>
+    <Resource Include="icons\Product\4сыра.png" />
+    <Resource Include="icons\Product\баварская.png" />
+    <Resource Include="icons\Product\барбекю.png" />
+    <Resource Include="icons\Product\золотаярыбка.png" />
+    <Resource Include="icons\Product\маргарита.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons\Ingredient\ГрибыШиитаке.png" />
+    <Resource Include="icons\Ingredient\Опята.png" />
+    <Resource Include="icons\Ingredient\Шампиньоны.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons\Ingredient\Ассортиизколбас.png" />
+    <Resource Include="icons\Ingredient\Бастурма16шт.png" />
+    <Resource Include="icons\Ingredient\Бекон8шт.png" />
+    <Resource Include="icons\Ingredient\Ветчина16шт.png" />
+    <Resource Include="icons\Ingredient\Колбасастуденческая.png" />
+    <Resource Include="icons\Ingredient\Колбаска8шт.png" />
+    <Resource Include="icons\Ingredient\Курица.png" />
+    <Resource Include="icons\Ingredient\Охотничьиколбаски.png" />
+    <Resource Include="icons\Ingredient\Пепперони16шт.png" />
+    <Resource Include="icons\Ingredient\Салями8шт.png" />
+    <Resource Include="icons\Ingredient\Сосискибаварскиесзеленью.png" />
+    <Resource Include="icons\Ingredient\ФаршБолоньезе.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons\Ingredient\Ананасы.png" />
+    <Resource Include="icons\Ingredient\Брокколи8шт.png" />
+    <Resource Include="icons\Ingredient\Кукуруза.png" />
+    <Resource Include="icons\Ingredient\Луккрасный.png" />
+    <Resource Include="icons\Ingredient\Маринованныеогурчики.png" />
+    <Resource Include="icons\Ingredient\Маслины.png" />
+    <Resource Include="icons\Ingredient\Морковьпокорейски.png" />
+    <Resource Include="icons\Ingredient\Перецболгарский.png" />
+    <Resource Include="icons\Ingredient\Перецхалапеньо.png" />
+    <Resource Include="icons\Ingredient\Помидоркичерри8шт.png" />
+    <Resource Include="icons\Ingredient\Помидоры.png" />
+    <Resource Include="icons\Ingredient\Свежийогурец16шт.png" />
+    <Resource Include="icons\Ingredient\Чеснок.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons\Ingredient\Креветки.png" />
+    <Resource Include="icons\Ingredient\Семга.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons\Ingredient\СоусБаварский.png" />
+    <Resource Include="icons\Ingredient\СоусГрибной.png" />
+    <Resource Include="icons\Ingredient\Соустоматный.png" />
+    <Resource Include="icons\Ingredient\соустоматныйострый.png" />
+    <Resource Include="icons\Ingredient\Соусфирменный.png" />
+    <Resource Include="icons\Ingredient\Соусфирменныйострый.png" />
+    <Resource Include="icons\Ingredient\СоусФранцузский.png" />
+    <Resource Include="icons\Ingredient\СоусЦезарь.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons\Ingredient\Базилик.png" />
+    <Resource Include="icons\Ingredient\Зелень.png" />
+    <Resource Include="icons\Ingredient\Майонез.png" />
+    <Resource Include="icons\Ingredient\Микссалат.png" />
+    <Resource Include="icons\Ingredient\СалатАйсберг.png" />
+    <Resource Include="icons\Ingredient\СоусБарбекю.png" />
+    <Resource Include="icons\Ingredient\Черныйперец.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons\Ingredient\СырГауда.png" />
+    <Resource Include="icons\Ingredient\СырГолландский.png" />
+    <Resource Include="icons\Ingredient\СырМоцарелла.png" />
+    <Resource Include="icons\Ingredient\СырПармезан.png" />
+    <Resource Include="icons\Ingredient\Сырсголубойплесенью.png" />
+    <Resource Include="icons\Ingredient\СырФета.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

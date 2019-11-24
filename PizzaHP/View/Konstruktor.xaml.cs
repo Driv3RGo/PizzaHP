@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using PizzaHP.ViewModels;
 
 namespace PizzaHP.View
 {
@@ -23,6 +24,7 @@ namespace PizzaHP.View
         public Konstruktor()
         {
             InitializeComponent();
+            DataContext = new BuildingPizza();
         }
     }
 }

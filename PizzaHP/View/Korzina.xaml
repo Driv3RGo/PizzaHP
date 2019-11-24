@@ -11,13 +11,15 @@
     <Grid Background="White">
 		<Grid>
 			<Grid.Background>
-				<ImageBrush ImageSource="/PizzaHP;component/icons/Фон.jpg" Opacity="0.4"/>
+				<ImageBrush ImageSource="/PizzaHP;component/icons/Фон.jpg" Opacity="0.3"/>
 			</Grid.Background>
 			<Grid.RowDefinitions>
-				<RowDefinition Height="80*"></RowDefinition>
-				<RowDefinition Height="421*"></RowDefinition>
+				<RowDefinition Height="80*"/>
+				<RowDefinition Height="421*"/>
 			</Grid.RowDefinitions>
-			<Label Grid.Row="0" Content="Корзина" Margin="10,10,0,0" FontSize="36" FontWeight="Bold" FontFamily="Arial Rounded MT Bold" Background="Transparent" BorderBrush="Black"/>
+			<Border Grid.Row="0" BorderThickness="1" BorderBrush="Black">
+				<Label Content="Корзина" FontSize="36" FontWeight="Bold" FontFamily="Arial Rounded MT Bold" Background="Transparent" BorderBrush="Black" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+			</Border>
 			<ListBox x:Name="Korzina_FULL" Grid.Row="1" Background="{x:Null}" BorderBrush="{x:Null}" d:IsHidden="True"/>
 			<Image x:Name="Korzina_NULL1" Margin="5,1,5,60" Grid.Row="1" Height="246" Width="246" Source="/PizzaHP;component/icons/Грустный смайлик.png"/>
 			<Label x:Name="Korzina_NULL" Grid.Row="1" Content="Ваша корзина пуста" Margin="5,250,5,1" FontSize="48" FontFamily="Arial Black" FontWeight="Bold" Background="#00000000" Foreground="#FF9A9595" Width="567" Height="62"/>
