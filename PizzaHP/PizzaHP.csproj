@@ -90,9 +90,13 @@
     <Compile Include="Models\Staff.cs" />
     <Compile Include="Models\Status.cs" />
     <Compile Include="Help\RelayCommand.cs" />
-    <Compile Include="ViewModels\Base.cs" />
+    <Compile Include="ViewModels\ViewModelBase.cs" />
     <Compile Include="ViewModels\BuildingPizza.cs" />
+    <Compile Include="ViewModels\ImageViewModel.cs" />
+    <Compile Include="ViewModels\Interfaces\IObservable.cs" />
+    <Compile Include="ViewModels\Interfaces\IObserver.cs" />
     <Compile Include="ViewModels\ProductViewModel.cs" />
+    <Compile Include="ViewModels\ShowBasket.cs" />
     <Compile Include="ViewModels\ShowPizza.cs" />
     <Compile Include="View\LoginScreen.xaml.cs">
       <DependentUpon>LoginScreen.xaml</DependentUpon>
@@ -179,7 +183,6 @@
     <Resource Include="icons\konstruktor\Специи.png" />
     <Resource Include="icons\konstruktor\Сыр.png" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <Resource Include="icons\Product\4сыра.png" />
     <Resource Include="icons\Product\баварская.png" />
@@ -251,6 +254,79 @@
     <Resource Include="icons\Ingredient\СырПармезан.png" />
     <Resource Include="icons\Ingredient\Сырсголубойплесенью.png" />
     <Resource Include="icons\Ingredient\СырФета.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons\Новая пицца\Ассорти из колбас.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons\Новая пицца\Соус Баварский.png" />
+    <Resource Include="icons\Новая пицца\Соус грибной.png" />
+    <Resource Include="icons\Новая пицца\Соус томатный острый.png" />
+    <Resource Include="icons\Новая пицца\Соус томатный.png" />
+    <Resource Include="icons\Новая пицца\Соус фирменный острый.png" />
+    <Resource Include="icons\Новая пицца\Соус фирменный.png" />
+    <Resource Include="icons\Новая пицца\Соус Французский.png" />
+    <Resource Include="icons\Новая пицца\Соус Цезарь.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons\Новая пицца\Сыр.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons\Новая пицца\Грибы Шиитаке.png" />
+    <Resource Include="icons\Новая пицца\Опята.png" />
+    <Resource Include="icons\Новая пицца\Шампиньоны.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons\Новая пицца\Креветки.png" />
+    <Resource Include="icons\Новая пицца\Семга.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons\Новая пицца\Бастурма 16шт.png" />
+    <Resource Include="icons\Новая пицца\Бекон 8шт.png" />
+    <Resource Include="icons\Новая пицца\Ветчина 16шт.png" />
+    <Resource Include="icons\Новая пицца\Колбаса студенческая.png" />
+    <Resource Include="icons\Новая пицца\Курица.png" />
+    <Resource Include="icons\Новая пицца\Охотничьи колбаски.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons\Новая пицца\Колбаса пк 8шт.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons\Новая пицца\Пепперони 16шт.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons\Новая пицца\Салями 8шт.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons\Новая пицца\Сосиски баварские с зеленью.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons\Новая пицца\Ананасы.png" />
+    <Resource Include="icons\Новая пицца\Брокколи 8шт.png" />
+    <Resource Include="icons\Новая пицца\Кукуруза.png" />
+    <Resource Include="icons\Новая пицца\Лук красный.png" />
+    <Resource Include="icons\Новая пицца\Маринованные огурчики.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons\Новая пицца\Маслины.png" />
+    <Resource Include="icons\Новая пицца\Перец болгарский.png" />
+    <Resource Include="icons\Новая пицца\Перец халапеньо.png" />
+    <Resource Include="icons\Новая пицца\Помидоры черри 8шт.png" />
+    <Resource Include="icons\Новая пицца\Помидоры.png" />
+    <Resource Include="icons\Новая пицца\Свежий огурец 16шт.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons\Новая пицца\Зелень.png" />
+    <Resource Include="icons\Новая пицца\Майонез.png" />
+    <Resource Include="icons\Новая пицца\Микс салат.png" />
+    <Resource Include="icons\Новая пицца\Салат Айсберг.png" />
+    <Resource Include="icons\Новая пицца\Соус Барбекю.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons\Новая пицца\Фарш Болоньеза.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons\Новая пицца\Морковь по-корейски.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

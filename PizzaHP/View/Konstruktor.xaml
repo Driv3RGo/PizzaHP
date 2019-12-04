@@ -14,19 +14,39 @@
 				<ImageBrush Opacity="0.3" ImageSource="/PizzaHP;component/icons/Фон.jpg"/>
 			</Grid.Background>
 			<Grid.RowDefinitions>
-				<RowDefinition Height="72*"/>
+				<RowDefinition Height="8*"/>
 				<RowDefinition Height="85"/>
-				<RowDefinition Height="212*"/>
-				<RowDefinition Height="81*"/>
+				<RowDefinition Height="212"/>
+				<RowDefinition Height="9*"/>
 			</Grid.RowDefinitions>
 			<Grid.ColumnDefinitions>
-				<ColumnDefinition Width="32*"></ColumnDefinition>
-				<ColumnDefinition Width="23*"></ColumnDefinition>
+				<ColumnDefinition/>
+				<ColumnDefinition Width="450"></ColumnDefinition>
 			</Grid.ColumnDefinitions>
 			<Border Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" BorderThickness="1" BorderBrush="Black">
 				<Label Content="Конструктор пиццы" FontSize="36" FontWeight="Bold" FontFamily="Arial Rounded MT Bold" Background="Transparent" BorderBrush="Black" HorizontalAlignment="Left" VerticalAlignment="Center"/>
 			</Border>
-			<Image Grid.Column="1" Grid.Row="1" Grid.RowSpan="2" Margin="11,10.2,10,10.4" Source="/PizzaHP;component/icons/Основа конструктора.PNG"/>
+			<ItemsControl Grid.Column="1" Grid.Row="1" Grid.RowSpan="2" Margin="10" ItemsSource="{Binding Path=Images}">
+				<ItemsControl.Background>
+					<ImageBrush ImageSource="/PizzaHP;component/icons/Основа конструктора.PNG" Stretch="Uniform"/>
+				</ItemsControl.Background>
+				<ItemsControl.ItemsPanel>
+					<ItemsPanelTemplate>
+						<Canvas/>
+					</ItemsPanelTemplate>
+				</ItemsControl.ItemsPanel>
+				<ItemsControl.ItemContainerStyle>
+					<Style>
+						<Setter Property="Canvas.Left" Value="80"/>
+						<Setter Property="Canvas.Top" Value="5"/>
+					</Style>
+				</ItemsControl.ItemContainerStyle>
+				<ItemsControl.ItemTemplate>
+					<DataTemplate>
+						<Image Source="{Binding Path=Path}" Width="270" Height="270"/>
+					</DataTemplate>
+				</ItemsControl.ItemTemplate>
+			</ItemsControl>
 			<Button Grid.Column="1" Grid.Row="1" x:Name="Restart" Background="{x:Null}" FontSize="16" FontFamily="Century Gothic" Foreground="White" BorderBrush="{x:Null}" FontWeight="Bold" Opacity="0.9" Margin="299,20.2,69,39.6">
 				<StackPanel Orientation="Horizontal">
 					<TextBlock Text="Заново" Foreground="Black" FontSize="14"/>
@@ -42,8 +62,21 @@
 					</Image>
 				</StackPanel>
 			</Button>
-			<Button Grid.Column="1" Grid.Row="3" Content="Заказать" BorderBrush="#FF2BFF00" Background="{x:Null}" FontSize="20" FontWeight="Bold" Margin="305,18.6,21,18.6"/>
-			<Label Grid.Column="1" Grid.Row="3" Content="Стоимость:&#xD;&#xA;Вес:  " FontSize="20" FontWeight="Bold" Background="Transparent" Margin="48,3.6,198,3.6"/>
+			<StackPanel Grid.Column="1" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Center">
+				<StackPanel Orientation="Horizontal">
+					<TextBlock Text="Вес " FontSize="20" FontWeight="Bold" Background="Transparent"/>
+					<TextBlock Text="{Binding Path=Massa}" FontSize="20" FontWeight="Bold" Background="Transparent"/>
+					<TextBlock Text=" г. /" FontSize="20" FontWeight="Bold" Background="Transparent"/>
+					<TextBlock Text=" Цена " FontSize="20" FontWeight="Bold" Background="Transparent"/>
+					<TextBlock Text="{Binding Path=Sum}" FontSize="20" FontWeight="Bold" Background="Transparent"/>
+					<TextBlock Text=" ₽" FontSize="20" FontWeight="Bold" Background="Transparent"/>
+				</StackPanel>
+				<Button FontSize="20" Background="{x:Null}" FontWeight="Bold" BorderBrush="{x:Null}" Margin="0,4,0,0">
+					<Border Margin="3" BorderThickness="1" CornerRadius="20" Background="#FFFF6E00">
+						<TextBlock Padding="30,5,30,5" Text="В корзину" Foreground="White"/>
+					</Border>
+				</Button>
+			</StackPanel>
 			<Grid Grid.Column="0" Grid.Row="1">
 				<Grid.Background>
 					<SolidColorBrush Opacity="0.3"/>
@@ -57,50 +90,53 @@
 					<ColumnDefinition></ColumnDefinition>
 					<ColumnDefinition></ColumnDefinition>
 				</Grid.ColumnDefinitions>
-				<Button Command="{Binding SousCommand}" Grid.Column="0" BorderBrush="Black">
+				<Button Command="{Binding Path=FilterCommand}" CommandParameter="{Binding Path=Sous}" Grid.Column="0" BorderBrush="Black">
 					<StackPanel>
 						<Image Stretch="Fill" Height="45" Width="50" Source="/PizzaHP;component/icons/konstruktor/Соус.png"/>
 						<TextBlock Text="Соус" Margin="0,0,0,0" Foreground="Black" FontSize="14" FontWeight="Bold" TextAlignment="Center"/>
 					</StackPanel>
 				</Button>
-				<Button x:Name="Cheese" Grid.Column="1" BorderBrush="Black">
+				<Button Command="{Binding Path=FilterCommand}" CommandParameter="{Binding Path=Cheese}" Grid.Column="1" BorderBrush="Black">
 					<StackPanel>
 						<Image Stretch="Fill" Height="45" Width="50" Source="/PizzaHP;component/icons/konstruktor/Сыр.png"/>
 						<TextBlock Text="Сыр" Margin="0,0,0,0" Foreground="Black" FontSize="14" FontWeight="Bold" TextAlignment="Center"/>
 					</StackPanel>
 				</Button>
-				<Button x:Name="Meat" Grid.Column="2" BorderBrush="Black">
+				<Button Command="{Binding Path=FilterCommand}" CommandParameter="{Binding Path=Meat}" Grid.Column="2" BorderBrush="Black">
 					<StackPanel>
 						<Image Stretch="Fill" Height="45" Width="50" Source="/PizzaHP;component/icons/konstruktor/Мясо.png"/>
 						<TextBlock Text="Мясо" Margin="0,0,0,0" Foreground="Black" FontSize="14" FontWeight="Bold" TextAlignment="Center"/>
 					</StackPanel>
 				</Button>
-				<Button x:Name="Fish" Grid.Column="3" BorderBrush="Black">
+				<Button Command="{Binding Path=FilterCommand}" CommandParameter="{Binding Path=Fish}" Grid.Column="3" BorderBrush="Black">
 					<StackPanel>
 						<Image Stretch="Fill" Height="45" Width="50" Source="/PizzaHP;component/icons/konstruktor/Рыба.png"/>
 						<TextBlock Text="Рыба" Margin="0,0,0,0" Foreground="Black" FontSize="14" FontWeight="Bold" TextAlignment="Center"/>
 					</StackPanel>
 				</Button>
-				<Button x:Name="Grib" Grid.Column="4" BorderBrush="Black">
+				<Button Command="{Binding Path=FilterCommand}" CommandParameter="{Binding Path=Grib}" Grid.Column="4" BorderBrush="Black">
 					<StackPanel>
 						<Image Stretch="Fill" Height="45" Width="50" Source="/PizzaHP;component/icons/konstruktor/Гриб.png"/>
 						<TextBlock Text="Грибы" Margin="0,0,0,0" Foreground="Black" FontSize="14" FontWeight="Bold" TextAlignment="Center"/>
 					</StackPanel>
 				</Button>
-				<Button x:Name="Tomato" Grid.Column="5" BorderBrush="Black">
+				<Button Command="{Binding Path=FilterCommand}" CommandParameter="{Binding Path=Tomato}" Grid.Column="5" BorderBrush="Black">
 					<StackPanel>
 						<Image Stretch="Fill" Height="45" Width="50" Source="/PizzaHP;component/icons/konstruktor/Овощи.png"/>
 						<TextBlock Text="Овощи" Margin="0,0,0,0" Foreground="Black" FontSize="14" FontWeight="Bold" TextAlignment="Center"/>
 					</StackPanel>
 				</Button>
-				<Button x:Name="Salt" Grid.Column="6" BorderBrush="Black">
+				<Button Command="{Binding Path=FilterCommand}" CommandParameter="{Binding Path=Salt}" Grid.Column="6" BorderBrush="Black">
 					<StackPanel>
 						<Image Stretch="Fill" Height="45" Width="50" Source="/PizzaHP;component/icons/konstruktor/Специи.png"/>
 						<TextBlock Text="Специи" Margin="0,0,0,0" Foreground="Black" FontSize="14" FontWeight="Bold" TextAlignment="Center"/>
 					</StackPanel>
 				</Button>
 			</Grid>
-			<ListBox ItemsSource="{Binding Path=AllIngredient}" SelectedItem="{Binding Path=SelectIngredient, Mode=TwoWay}" Grid.Column="0" Grid.Row="2" Grid.RowSpan="2" Background="{x:Null}" BorderBrush="{x:Null}" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+			<ListBox ItemsSource="{Binding Path=AllIngredient}" SelectedItem="{Binding Path=SelectIngredient}" Grid.Column="0" Grid.Row="2" Grid.RowSpan="2" BorderBrush="{x:Null}" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+				<ListBox.Background>
+					<SolidColorBrush Color="White" Opacity="0.6"/>
+				</ListBox.Background>
 				<ListBox.ItemsPanel>
 					<ItemsPanelTemplate>
 						<WrapPanel/>
@@ -108,10 +144,10 @@
 				</ListBox.ItemsPanel>
 				<ListBox.ItemTemplate>
 					<DataTemplate>
-						<Border BorderThickness="2" BorderBrush="#FFFF4900" CornerRadius="10">
+						<Border x:Name="Border" BorderThickness="2" BorderBrush="#FFFF4900" CornerRadius="10">
 							<StackPanel Width="190">
 								<Image Height="100" Width="100" Source="{Binding Path=Picture}"/>
-								<TextBlock Text="{Binding Path=Name}" FontSize="13" FontWeight="Bold" HorizontalAlignment="Center"/>
+								<TextBlock Text="{Binding Path=Name}" FontSize="14" FontWeight="Bold" HorizontalAlignment="Center" TextWrapping="Wrap"/>
 								<StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
 									<TextBlock Text="{Binding Path=Massa}" FontSize="13"/>
 									<TextBlock Text=" г. / " FontSize="13"/>

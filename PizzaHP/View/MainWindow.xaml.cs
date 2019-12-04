@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using PizzaHP.ViewModels;
 
 namespace PizzaHP.View
 {
@@ -22,12 +23,17 @@ namespace PizzaHP.View
     {
         private Page kat;
         private Page kor;
+        private ShowPizza sp;   //наблюдаемый объект
+        private ShowBasket sb;  //наблюдатель
 
         public MainWindow()
         {
             InitializeComponent();
-            kat = new Katalog();
-            kor = new Korzina();
+            sp = new ShowPizza();
+            sb = new ShowBasket(sp);
+
+            kat = new Katalog(sp);
+            kor = new Korzina(sb);
             Navigable.Content = kat;
         }
 

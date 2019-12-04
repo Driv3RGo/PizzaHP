@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using PizzaHP.ViewModels;
 
 namespace PizzaHP.View
 {
@@ -20,9 +21,10 @@ namespace PizzaHP.View
     /// </summary>
     public partial class Korzina : Page
     {
-        public Korzina()
+        public Korzina(ShowBasket sb)
         {
             InitializeComponent();
+            DataContext = sb;
         }
     }
 }

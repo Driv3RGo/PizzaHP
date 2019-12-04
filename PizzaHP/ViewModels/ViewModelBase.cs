@@ -7,8 +7,10 @@ using System.Threading.Tasks;
 
 namespace PizzaHP.ViewModels
 {
-    public class Base : INotifyPropertyChanged
+    public class ViewModelBase : INotifyPropertyChanged
     {
+        public string DisplayName { get; set; }
+
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged(string propertyName)
         {

@@ -7,13 +7,15 @@ using PizzaHP.Models;
 
 namespace PizzaHP.ViewModels
 {
-    public class ShowPizza : Base
+    public class ShowPizza : ViewModelBase, IObservable
     {
         private PizzaContext db;
-        private ProductViewModel selectedproduct;
-        public List<ProductViewModel> AllProduct { get; set; }
+        private List<IObserver> observers;
+        private ProductViewModel selectedproduct;       //Выбранный продукт
+        public List<ProductViewModel> AllProduct { get; set; }  //Список продуктов
+        public int ProductID;           //Элементы в корзине
 
-        private double _gridOpacity = 0.0;
+        private double _gridOpacity = 0.0;      //Прозрачность grid, который содержит информации о продукте
         public double GridOpacity
         {
             get
@@ -30,7 +32,21 @@ namespace PizzaHP.ViewModels
         public ShowPizza()
         {
             db = new PizzaContext();
-            AllProduct = db.Product.ToList().Select(i => new ProductViewModel(i)).ToList();
+            observers = new List<IObserver>();
+            AllProduct = db.Product.ToList().Select(i => new ProductViewModel(i)).Where(i => !i.MyPizza).ToList();
+        }
+
+        public void AddObserver(IObserver o)
+        {
+            observers.Add(o);
+        }
+
+        public void NotifyObservers()
+        {
+            foreach (IObserver o in observers)
+            {
+                o.Update(ProductID);
+            }
         }
 
         public ProductViewModel SelectProduct
@@ -41,8 +57,22 @@ namespace PizzaHP.ViewModels
             }
             set
             {
-                selectedproduct = value;
+                if(_gridOpacity == 0.0)
+                    GridOpacity = 1.0;
+                selectedproduct = value;           
                 OnPropertyChanged("SelectProduct");
+            }
+        }
+
+        public RelayCommand AddKorzina
+        {
+            get
+            {
+                return new RelayCommand((obj =>
+                {
+                    ProductID = selectedproduct.ProductID;
+                    NotifyObservers();
+                }));
             }
         }
     }

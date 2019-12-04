@@ -54,37 +54,37 @@
 					</DataTemplate>
 				</ListBox.ItemTemplate>
 			</ListBox>
-			<Grid Grid.Row="1" Grid.Column="1" DataContext="{Binding Path=SelectProduct}" Opacity="{Binding Path=GridOpacity, Mode=TwoWay}">
+			<Grid Grid.Row="1" Grid.Column="1" Opacity="{Binding Path=GridOpacity}">
 				<Grid.ColumnDefinitions>
 					<ColumnDefinition/>
 					<ColumnDefinition/>
 				</Grid.ColumnDefinitions>
-				<Image Grid.Column="0" Source="{Binding Path=Picture}"/>
+				<Image Grid.Column="0" Source="{Binding Path=SelectProduct.Picture}"/>
 				<Grid Grid.Column="1">
 					<Grid.RowDefinitions>
 						<RowDefinition Height="150*"/>
 						<RowDefinition Height="40*"/>
 					</Grid.RowDefinitions>
 					<StackPanel Grid.Row="0" Margin="0,0,0,6.6">
-						<TextBlock Text="{Binding Path=Name}" FontSize="36" FontWeight="Bold" HorizontalAlignment="Center"/>
+						<TextBlock Text="{Binding Path=SelectProduct.Name}" FontSize="36" FontWeight="Bold" HorizontalAlignment="Center"/>
 						<StackPanel Orientation="Horizontal">
 							<TextBlock FontSize="10"/>
 							<TextBlock Text="Размер: " FontSize="20" FontWeight="Bold"/>
-							<TextBlock Text="{Binding Path=Size}" FontSize="20"/>
+							<TextBlock Text="{Binding Path=SelectProduct.Size}" FontSize="20"/>
 							<TextBlock Text=" см" FontSize="20"/>
 						</StackPanel>
 						<TextBlock FontSize="10"/>
 						<StackPanel Orientation="Horizontal">
 							<TextBlock Text="Цена: " FontSize="20" FontWeight="Bold"/>
-							<TextBlock Text="{Binding Path=Price}" FontSize="20"/>
+							<TextBlock Text="{Binding Path=SelectProduct.Price}" FontSize="20"/>
 							<TextBlock Text=" ₽" FontSize="20"/>
 						</StackPanel>
 						<TextBlock FontSize="10"/>
 						<TextBlock Text="Состав:" FontSize="20" FontWeight="Bold"/>
-						<TextBlock Text="{Binding Path=Ing}" FontSize="20" TextWrapping="Wrap"/>
+						<TextBlock Text="{Binding Path=SelectProduct.Ing}" FontSize="20" TextWrapping="Wrap"/>
 					</StackPanel>
 					<Grid Grid.Row="1">
-						<Button FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" Background="{x:Null}" FontWeight="Bold" BorderBrush="{x:Null}">
+						<Button Command="{Binding Path=AddKorzina}" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" Background="{x:Null}" FontWeight="Bold" BorderBrush="{x:Null}" Click="Button_Click">
 							<Border Margin="5" BorderThickness="1" CornerRadius="20" Background="#FFFF6E00">
 								<TextBlock Padding="40,5,40,5" Text="В корзину" Foreground="White"/>
 							</Border>

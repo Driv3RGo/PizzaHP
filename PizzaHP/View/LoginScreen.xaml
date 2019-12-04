@@ -19,7 +19,7 @@
 		<Border Grid.Row="1" Background="#2e3137" CornerRadius="20" Margin="20,20.2,19.6,19.8" Grid.ColumnSpan="2">
 			<StackPanel Margin="20">
 				<Label Content="Login" Foreground="White" FontSize="25" HorizontalAlignment="Center"/>
-				<Separator></Separator>
+				<Separator/>
 				<Label Content="Username" Foreground="White"/>
 				<TextBox Name="txtUsername" Foreground="White" FontSize="18" Background="#FF545D6A"/>
 				<Label Content="Password" Foreground="White"/>

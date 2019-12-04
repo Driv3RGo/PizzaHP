@@ -7,7 +7,7 @@ using PizzaHP.Models;
 
 namespace PizzaHP.ViewModels
 {
-    public class ProductViewModel : Base
+    public class ProductViewModel : ViewModelBase
     {
         private Product product;
 
