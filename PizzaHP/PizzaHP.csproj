@@ -70,6 +70,18 @@
     <Compile Include="Models\ReportModel.cs" />
     <Compile Include="ViewModels\OrderViewModel.cs" />
     <Compile Include="ViewModels\ReportViewModel.cs" />
+    <Compile Include="View\Personal\Page_Client.xaml.cs">
+      <DependentUpon>Page_Client.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Personal\Page_Ing.xaml.cs">
+      <DependentUpon>Page_Ing.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Personal\Page_Order.xaml.cs">
+      <DependentUpon>Page_Order.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Personal\Page_Otchet.xaml.cs">
+      <DependentUpon>Page_Otchet.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Page_Report.xaml.cs">
       <DependentUpon>Page_Report.xaml</DependentUpon>
     </Compile>
@@ -118,6 +130,22 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Korzina.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Personal\Page_Client.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Personal\Page_Ing.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Personal\Page_Order.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Personal\Page_Otchet.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -349,6 +377,7 @@
   <ItemGroup>
     <Resource Include="icons\Product\Деревенская.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

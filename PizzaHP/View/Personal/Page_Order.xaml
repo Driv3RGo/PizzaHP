@@ -1,0 +1,27 @@
+﻿<Page x:Class="PizzaHP.View.Page_Order"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:PizzaHP.View"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Page_Order">
+
+    <Grid Background="White">
+		<Grid>
+			<Grid.Background>
+				<ImageBrush ImageSource="/PizzaHP;component/icons/Фон.jpg" Opacity="0.3"/>
+			</Grid.Background>
+			<ListBox ItemsSource="{Binding Path=Orders}" Background="{x:Null}" BorderBrush="{x:Null}">
+				<ListBox.ItemTemplate>
+					<DataTemplate>
+						<StackPanel Orientation="Horizontal">
+							<TextBlock Text="{Binding Path=OrderID}"/>
+						</StackPanel>
+					</DataTemplate>
+				</ListBox.ItemTemplate>
+			</ListBox>
+		</Grid>
+    </Grid>
+</Page>

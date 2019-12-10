@@ -5,20 +5,35 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 using PizzaHP.Models;
+using PizzaHP.View;
 
 namespace PizzaHP.ViewModels
 {
     public class ReportViewModel : ViewModelBase
     {
+        private Page order;     //Страница заказы
+        private Page client;    //Страница клиенты
+        private Page ing;       //Страница ингредиенты
+        private Page otchet;    //Страница отчёт
+
         PizzaContext db;
-        Models.ReportModel report;
+        ReportModel report;
         public List<OrderViewModel> Orders { get; set; }                    //заказы
         public ObservableCollection<Client> Clients { get; set; }           //клиенты
-        public ObservableCollection<Ingredient> Ingredients { get; set; }   //ингредиенты
 
-        private List<Result> data;
-        public List<Result> Data        //Отчёт
+        private ObservableCollection<Ingredient> ingredients;       //ингредиенты
+        public ObservableCollection<Ingredient> Ingredients
+        {
+            get { return ingredients; }
+            set { ingredients = value; OnPropertyChanged("Ingredients"); }
+        }
+
+        public List<Kategori> Kategori { get; set; }    //заполнение комбобокса с категориями
+
+        private List<Result> data;      //Отчёт
+        public List<Result> Data
         {
             get { return data; }
             set { data = value; OnPropertyChanged("Data"); }
@@ -26,68 +41,19 @@ namespace PizzaHP.ViewModels
 
         public ReportViewModel()
         {
+            order = new Page_Order(this);
+            client = new Page_Client(this);
+            ing = new Page_Ing(this);
+            otchet = new Page_Otchet(this);
+            SourcePage = otchet;
+
             db = new PizzaContext();
-            report = new Models.ReportModel();
+            report = new ReportModel();
             Orders = db.Order.ToList().Select(i => new OrderViewModel(i)).ToList();
             Clients = new ObservableCollection<Client>(db.Client);
             Ingredients = new ObservableCollection<Ingredient>(db.Ingredient);
+            Kategori = db.Kategori.ToList();
             Data = new List<Result>();
-        }
-
-        private double orderOpacity = 1.0;      //Прозрачность grid, который содержит информации о заказах
-        public double OrderOpacity
-        {
-            get
-            {
-                return orderOpacity;
-            }
-            set
-            {
-                orderOpacity = value;
-                OnPropertyChanged("OrderOpacity");
-            }
-        }
-
-        private double clientOpacity = 0.0;      //Прозрачность grid, который содержит информации о клиентах
-        public double ClientOpacity
-        {
-            get
-            {
-                return clientOpacity;
-            }
-            set
-            {
-                clientOpacity = value;
-                OnPropertyChanged("ClientOpacity");
-            }
-        }
-
-        private double ingOpacity = 0.0;      //Прозрачность grid, который содержит информации о ингредиентах
-        public double IngOpacity
-        {
-            get
-            {
-                return ingOpacity;
-            }
-            set
-            {
-                ingOpacity = value;
-                OnPropertyChanged("IngOpacity");
-            }
-        }
-        
-        private double reportOpacity = 0.0;      //Прозрачность grid, который содержит отчёт
-        public double ReportOpacity
-        {
-            get
-            {
-                return reportOpacity;
-            }
-            set
-            {
-                reportOpacity = value;
-                OnPropertyChanged("ReportOpacity");
-            }
         }
 
         private DateTime date_Start = DateTime.Now;           //Начальная дата
@@ -132,28 +98,31 @@ namespace PizzaHP.ViewModels
             set { selecteding = value; OnPropertyChanged("SelectedIng"); }
         }
 
-        public RelayCommand FilterCommand
+        private Page sourcePage;        //Выбранная страница
+        public Page SourcePage
+        {
+            get { return sourcePage; }
+            set { sourcePage = value; OnPropertyChanged("SourcePage"); }
+        }
+
+        public RelayCommand FilterCommand   //Открыть страницу
         {
             get
             {
                 return new RelayCommand((obj =>
                 {
-                    OrderOpacity = 0.0;
-                    ClientOpacity = 0.0;
-                    IngOpacity = 0.0;
-                    ReportOpacity = 0.0;
                     switch ((string)obj)
                     {
-                        case "1": OrderOpacity = 1.0; break;
-                        case "2": ClientOpacity = 1.0; break;
-                        case "3": IngOpacity = 1.0; break;
-                        case "4": ReportOpacity = 1.0; break;
+                        case "1": SourcePage = order; break;
+                        case "2": SourcePage = client; break;
+                        case "3": SourcePage = ing; break;
+                        case "4": SourcePage = otchet; break;
                     } 
                 }));
             }
-        }
+        }   
 
-        private RelayCommand deleteCommand;
+        private RelayCommand deleteCommand;     //Удалить ингредиент из БД
         public RelayCommand DeleteCommand
         {
             get
@@ -164,15 +133,30 @@ namespace PizzaHP.ViewModels
                     Ingredient ing = db.Ingredient.Find(selecteding.IngredientID);
                     if (ing != null)
                     {
-                        db.Ingredient.Remove(ing);
+                        ingredients.Remove(ing);
+                        Ingredients = Ingredients;
                     }
                 },
                 (obj) => selecteding != null));  //условие, при котором будет доступна команда
             }
         }
 
-        private RelayCommand findCommand;
-        public RelayCommand FindCommand
+        private RelayCommand changeCommand;     //Изменить информацию ингредиента из БД
+        public RelayCommand ChangeCommand
+        {
+            get
+            {
+                return changeCommand ??
+                (changeCommand = new RelayCommand(obj =>
+                {
+                    db.SaveChanges();
+                },
+                (obj) => selecteding != null));  //условие, при котором будет доступна команда
+            }
+        }
+
+        private RelayCommand findCommand;   //Выполнить отчёт
+        public RelayCommand FindCommand 
         {
             get
             {
@@ -183,9 +167,10 @@ namespace PizzaHP.ViewModels
                     if (N > 0) //Если есть хотя бы 1 заказ
                     {
                         Sum = db.Order.Where(i => i.DataEnd >= date_Start && i.DataEnd <= date_End).Sum(i => i.Cost);
-                        Data = report.Otchet(date_Start, date_End);
-                        Pizza = report.Pizza(date_Start, date_End);
                     }
+                    else Sum = 0;
+                    Data = report.Otchet(date_Start, date_End);
+                    Pizza = report.Pizza(date_Start, date_End);
                 },
                 (obj) => date_End > date_Start));  //условие, при котором будет доступна команда
             }
