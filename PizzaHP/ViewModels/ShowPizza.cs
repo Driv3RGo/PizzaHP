@@ -7,10 +7,10 @@ using PizzaHP.Models;
 
 namespace PizzaHP.ViewModels
 {
-    public class ShowPizza : ViewModelBase, IObservable
+    public class ShowPizza : ViewModelBase
     {
         private PizzaContext db;
-        private List<IObserver> observers;
+        private ShowBasket basket;      //Корзина
         private ProductViewModel selectedproduct;       //Выбранный продукт
         public List<ProductViewModel> AllProduct { get; set; }  //Список продуктов
         public int ProductID;           //Элементы в корзине
@@ -29,24 +29,11 @@ namespace PizzaHP.ViewModels
             }
         }
 
-        public ShowPizza()
+        public ShowPizza(ShowBasket sb)
         {
             db = new PizzaContext();
-            observers = new List<IObserver>();
+            basket = sb;        
             AllProduct = db.Product.ToList().Select(i => new ProductViewModel(i)).Where(i => !i.MyPizza).ToList();
-        }
-
-        public void AddObserver(IObserver o)
-        {
-            observers.Add(o);
-        }
-
-        public void NotifyObservers()
-        {
-            foreach (IObserver o in observers)
-            {
-                o.Update(ProductID);
-            }
         }
 
         public ProductViewModel SelectProduct
@@ -71,7 +58,7 @@ namespace PizzaHP.ViewModels
                 return new RelayCommand((obj =>
                 {
                     ProductID = selectedproduct.ProductID;
-                    NotifyObservers();
+                    basket.Update(ProductID);
                 }));
             }
         }

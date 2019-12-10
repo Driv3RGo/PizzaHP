@@ -17,14 +17,14 @@ using PizzaHP.ViewModels;
 namespace PizzaHP.View
 {
     /// <summary>
-    /// Логика взаимодействия для Korzina.xaml
+    /// Логика взаимодействия для Page_Report.xaml
     /// </summary>
-    public partial class Korzina : Page
+    public partial class Page_Report : Page
     {
-        public Korzina(ShowBasket basket)
+        public Page_Report()
         {
             InitializeComponent();
-            DataContext = basket;
+            DataContext = new ReportViewModel();
         }
     }
 }

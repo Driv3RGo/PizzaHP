@@ -21,15 +21,10 @@ namespace PizzaHP.View
     /// </summary>
     public partial class Katalog : Page
     {
-        public Katalog(ShowPizza sp)
+        public Katalog(ShowBasket basket)
         {
             InitializeComponent();
-            DataContext = sp;
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show("Товар успешно добавлен в корзину");
+            DataContext = new ShowPizza(basket);
         }
     }
 }

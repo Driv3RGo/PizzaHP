@@ -21,10 +21,10 @@ namespace PizzaHP.View
     /// </summary>
     public partial class Konstruktor : Page
     {
-        public Konstruktor()
+        public Konstruktor(ShowBasket basket)
         {
             InitializeComponent();
-            DataContext = new BuildingPizza();
+            DataContext = new BuildingPizza(basket);
         }
     }
 }

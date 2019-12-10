@@ -23,17 +23,15 @@ namespace PizzaHP.View
     {
         private Page kat;
         private Page kor;
-        private ShowPizza sp;   //наблюдаемый объект
-        private ShowBasket sb;  //наблюдатель
+        private ShowBasket basket;
 
         public MainWindow()
         {
             InitializeComponent();
-            sp = new ShowPizza();
-            sb = new ShowBasket(sp);
+            basket = new ShowBasket();
 
-            kat = new Katalog(sp);
-            kor = new Korzina(sb);
+            kat = new Katalog(basket);
+            kor = new Korzina(basket);
             Navigable.Content = kat;
         }
 
@@ -49,8 +47,7 @@ namespace PizzaHP.View
 
         private void Login_Click(object sender, RoutedEventArgs e)          //Кнопка личный кабинет
         {
-            LoginScreen ls = new LoginScreen();
-            ls.Show();
+            Navigable.Content = new Page_Report();
         }
 
         private void Katalog_Click(object sender, RoutedEventArgs e)        //Конпка каталог
@@ -66,7 +63,7 @@ namespace PizzaHP.View
             Grid1.Visibility = Visibility.Hidden;
             Grid2.Visibility = Visibility.Visible;
             Grid3.Visibility = Visibility.Hidden;
-            Navigable.Content = new Konstruktor();
+            Navigable.Content = new Konstruktor(basket);
         }
 
         private void Korzina_Click(object sender, RoutedEventArgs e)        //Кнопка корзина

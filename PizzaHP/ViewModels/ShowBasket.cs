@@ -8,25 +8,21 @@ using PizzaHP.Models;
 
 namespace PizzaHP.ViewModels
 {
-    public class ShowBasket : ViewModelBase, IObserver
+    public class ShowBasket : ViewModelBase
     {
         private PizzaContext db;
-        IObservable showpizza;
         private List<int> ProductID;     //Список продуктов в корзине
 
-        public ShowBasket(IObservable obs)
+        public ShowBasket()
         {
             db = new PizzaContext();
             AllProduct = new ObservableCollection<Product>();
             ProductID = new List<int>();
             Sum = 0;
-            showpizza = obs;
-            showpizza.AddObserver(this);
         }
 
-        public void Update(object ob)
+        public void Update(int pID)
         {
-            int pID = (int)ob;
             ProductID.Add(pID);
             Product pr = db.Product.Find(pID);
             _AllProduct.Add(pr);
@@ -129,7 +125,7 @@ namespace PizzaHP.ViewModels
             }
         }
 
-        private string fio = null;      //Имя клиента
+        private string fio = "";      //Имя клиента
         public string FIO
         {
             get
@@ -143,7 +139,7 @@ namespace PizzaHP.ViewModels
             }
         }
 
-        private string phoneNumber = null;      //Телефон клиента
+        private string phoneNumber = "";      //Телефон клиента
         public string PhoneNumber
         {
             get
@@ -157,7 +153,7 @@ namespace PizzaHP.ViewModels
             }
         }
 
-        private string email = null;        //Почти клиента
+        private string email = "";        //Почти клиента
         public string Email
         {
             get
@@ -171,7 +167,7 @@ namespace PizzaHP.ViewModels
             }
         }
 
-        private string address = null;        //Адрес доставки
+        private string address = "";        //Адрес доставки
         public string Address
         {
             get
@@ -207,7 +203,7 @@ namespace PizzaHP.ViewModels
                         Client_FK = cl.ClientID,
                         Address = address,
                         DataBegin = DateTime.Now,
-                        DataEnd = DateTime.Now.AddHours(rand.Next(3)).AddMinutes(rand.Next(50)),
+                        DataEnd = DateTime.Now.AddHours(rand.Next(1,3)).AddMinutes(rand.Next(50)),
                         Status_FK = 1,
                         Cost = sum,
                     };
@@ -223,22 +219,24 @@ namespace PizzaHP.ViewModels
                         };
                         db.Order_line.Add(ol);
                     }
-                    //if(Save())
-                    //{
-                    //    Sum = 0;
-                    //    FIO = null;
-                    //    PhoneNumber = null;
-                    //    Email = null;
-                    //    Address = null;
-                    //    AllProduct.Clear();
-                    //    ProductID.Clear();
-                    //}
+                    if (Save())
+                    {
+                        Sum = 0;
+                        FIO = "";
+                        PhoneNumber = "";
+                        Email = "";
+                        Address = "";
+                        AllProduct.Clear();
+                        ProductID.Clear();
+                        GridOpacity1 = 0.0;
+                        GridOpacity2 = 1.0;
+                    }
                 },
-                (obj) => FIO != null && PhoneNumber != null && Email != null && Address != null));  //условие, при котором будет доступна команда
+                (obj) => FIO != "" && PhoneNumber != "" && Email != "" && Address != ""));  //условие, при котором будет доступна команда
             }
         }
 
-        public bool Save()
+        private bool Save()
         {
             if (db.SaveChanges() > 0) return true;
             return false;

@@ -12,20 +12,23 @@ namespace PizzaHP.ViewModels
     public class BuildingPizza : ViewModelBase
     {
         private PizzaContext db;
+        private ShowBasket basket;      //Корзина
         public ObservableCollection<ImageViewModel> Images { get; set; }   
         private decimal sum;        //Сумма созданой пиццы
         private int massa;       //Масса созданой пиццы
         public List<int> IngredientID;   //Состав создаваемой пиццы
         private int sous_id = 0;        //Выбранный соус
 
-        public BuildingPizza()
+        public BuildingPizza(ShowBasket sb)
         {
             db = new PizzaContext();
+            basket = sb;
             selectedingredient = db.Ingredient.Where(i => i.IngredientID == 1).SingleOrDefault();
             Images = new ObservableCollection<ImageViewModel>();
             sum = selectedingredient.Price;
             massa = selectedingredient.Massa;
             IngredientID = new List<int>();
+            IngredientID.Add(selectedingredient.IngredientID);
             Filtration();
         }
 
@@ -157,6 +160,58 @@ namespace PizzaHP.ViewModels
                 {
                     AllIngredient = (List<Ingredient>)obj;
                 }));
+            }
+        }
+
+        public RelayCommand RestartCommand
+        {
+            get
+            {
+                return new RelayCommand((obj =>
+                {
+                    Images.Clear();
+                    IngredientID.Clear();
+                    selectedingredient = db.Ingredient.Where(i => i.IngredientID == 1).SingleOrDefault();
+                    Sum = selectedingredient.Price;
+                    Massa = selectedingredient.Massa;
+                    IngredientID.Add(selectedingredient.IngredientID);
+                    sous_id = 0;
+                }));
+            }
+        }    
+
+        private RelayCommand addCommand;     //добавить в корзину
+        public RelayCommand AddCommand
+        {
+            get
+            {
+                return addCommand ??
+                (addCommand = new RelayCommand(obj =>
+                { 
+                    Product product = new Product
+                    {
+                        Name = "Конструктор пиццы",
+                        Price = sum,
+                        Size = 27,
+                        MyPizza = true,
+                        Visible = false,
+                    };
+                    db.Product.Add(product);
+
+                    foreach (var pId in IngredientID)
+                    {
+                        Composition c = new Composition
+                        {
+                            Count = 1,
+                            Ingredient_FK = pId,
+                            Product_FK = product.ProductID,
+                        };
+                        db.Composition.Add(c);
+                    }
+                    //db.SaveChanges();
+                    //basket.Update(product.ProductID);
+                },
+                (obj) => IngredientID.Count > 3));
             }
         }
     }

@@ -84,7 +84,7 @@
 						<TextBlock Text="{Binding Path=SelectProduct.Ing}" FontSize="20" TextWrapping="Wrap"/>
 					</StackPanel>
 					<Grid Grid.Row="1">
-						<Button Command="{Binding Path=AddKorzina}" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" Background="{x:Null}" FontWeight="Bold" BorderBrush="{x:Null}" Click="Button_Click">
+						<Button Command="{Binding Path=AddKorzina}" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" Background="{x:Null}" FontWeight="Bold" BorderBrush="{x:Null}">
 							<Border Margin="5" BorderThickness="1" CornerRadius="20" Background="#FFFF6E00">
 								<TextBlock Padding="40,5,40,5" Text="В корзину" Foreground="White"/>
 							</Border>
