@@ -76,7 +76,7 @@
 					</Grid>
 					<Grid Grid.Row="2" VerticalAlignment="Center">
 						<TextBlock Margin="4,0,0,0" Text="Телефон:" FontSize="20" FontWeight="Bold"/>
-						<TextBox Text="{Binding Path=PhoneNumber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontSize="16" Background="{x:Null}" BorderBrush="Black" Width="320" FontStyle="Italic" BorderThickness="2" MaxLength="16" Margin="25,0,0,0"/>
+						<TextBox Text="{Binding Path=PhoneNumber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontSize="16" Background="{x:Null}" BorderBrush="Black" Width="320" FontStyle="Italic" BorderThickness="2" MaxLength="15" Margin="25,0,0,0" ToolTip="8(999)999-99-99"/>
 					</Grid>
 					<Grid Grid.Row="3" VerticalAlignment="Center">
 						<TextBlock Margin="29,0,0,0" Text="Почта:" FontSize="20" FontWeight="Bold"/>

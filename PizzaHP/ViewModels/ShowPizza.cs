@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using PizzaHP.Models;
+using PizzaHP.View;
 
 namespace PizzaHP.ViewModels
 {
@@ -59,6 +60,7 @@ namespace PizzaHP.ViewModels
                 {
                     ProductID = selectedproduct.ProductID;
                     basket.Update(ProductID);
+                    DisplayName = "Пицца добавлена в корзину";
                 }));
             }
         }

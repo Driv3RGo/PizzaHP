@@ -139,7 +139,7 @@ namespace PizzaHP.ViewModels
             }
         }
 
-        private string phoneNumber = "";      //Телефон клиента
+        private string phoneNumber = "8(";      //Телефон клиента
         public string PhoneNumber
         {
             get
@@ -230,6 +230,8 @@ namespace PizzaHP.ViewModels
                         ProductID.Clear();
                         GridOpacity1 = 0.0;
                         GridOpacity2 = 1.0;
+                        DisplayName = "Ваш заказ оформлен";
+                        DisplayName = "Ожидайте звонка";
                     }
                 },
                 (obj) => FIO != "" && PhoneNumber != "" && Email != "" && Address != ""));  //условие, при котором будет доступна команда

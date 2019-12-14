@@ -49,7 +49,7 @@
 					</StackPanel>
 				</Button>
 			</Grid>
-			<Frame Grid.Row="1" Content="{Binding Path=SourcePage}" Opacity="{Binding Path=FrameOpacity}" NavigationUIVisibility="Hidden"/>
+			<Frame Grid.Row="1" Content="{Binding Path=SourcePage}" NavigationUIVisibility="Hidden"/>
 		</Grid>
 	</Grid>
 </Page>

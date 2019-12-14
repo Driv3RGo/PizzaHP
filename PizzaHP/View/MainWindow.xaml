@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PizzaHP.View"
         mc:Ignorable="d"
-        Title="MainWindow" Height="550" Width="1300" WindowStyle="None" ResizeMode="CanResizeWithGrip" AllowsTransparency="False">
+        Title="MainWindow" Height="550" Width="1300" WindowStyle="None" ResizeMode="CanResizeWithGrip" AllowsTransparency="False" WindowStartupLocation="CenterScreen">
 	<Grid>
 		<Grid.ColumnDefinitions>
 			<ColumnDefinition Width="195"></ColumnDefinition>
