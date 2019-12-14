@@ -22,27 +22,20 @@
 					<ColumnDefinition/>
 					<ColumnDefinition/>
 					<ColumnDefinition/>
-					<ColumnDefinition/>
 				</Grid.ColumnDefinitions>
 				<Button Command="{Binding Path=FilterCommand}" CommandParameter="1" Grid.Column="0" Background="{x:Null}" BorderBrush="Black">
-					<StackPanel Orientation="Horizontal">
-						<Image Width="50" Height="50" Source="/PizzaHP;component/icons/Заказы.png"/>
-						<TextBlock Text=" Заказы" FontWeight="Bold" FontSize="20" VerticalAlignment="Center"/>
-					</StackPanel>
-				</Button>
-				<Button Command="{Binding Path=FilterCommand}" CommandParameter="2" Grid.Column="1" Background="{x:Null}" BorderBrush="Black">
 					<StackPanel Orientation="Horizontal">
 						<Image Width="50" Height="50" Source="/PizzaHP;component/icons/Личный кабинет.png"/>
 						<TextBlock Text=" Клиенты" FontWeight="Bold" FontSize="20" VerticalAlignment="Center"/>
 					</StackPanel>
 				</Button>
-				<Button Command="{Binding Path=FilterCommand}" CommandParameter="3" Grid.Column="2" Background="{x:Null}" BorderBrush="Black">
+				<Button Command="{Binding Path=FilterCommand}" CommandParameter="2" Grid.Column="1" Background="{x:Null}" BorderBrush="Black">
 					<StackPanel Orientation="Horizontal">
 						<Image Width="50" Height="50" Source="/PizzaHP;component/icons/konstruktor/Овощи.png"/>
 						<TextBlock Text=" Ингредиенты" FontWeight="Bold" FontSize="20" VerticalAlignment="Center"/>
 					</StackPanel>
 				</Button>
-				<Button Command="{Binding Path=FilterCommand}" CommandParameter="4" Grid.Column="3" Background="{x:Null}" BorderBrush="Black">
+				<Button Command="{Binding Path=FilterCommand}" CommandParameter="3" Grid.Column="2" Background="{x:Null}" BorderBrush="Black">
 					<StackPanel Orientation="Horizontal">
 						<Image Width="50" Height="50" Source="/PizzaHP;component/icons/Отчёт.png"/>
 						<TextBlock Text=" Отчёт" FontWeight="Bold" FontSize="20" VerticalAlignment="Center"/>

@@ -4,6 +4,6 @@
              xmlns:local="clr-namespace:PizzaHP"
              StartupUri="View/MainWindow.xaml">
 	<Application.Resources>
-
+		<ResourceDictionary Source="Style/Scroll.xaml"/>
 	</Application.Resources>
 </Application>

@@ -12,6 +12,7 @@ namespace PizzaHP.ViewModels
     {
         private PizzaContext db;
         private List<int> ProductID;     //Список продуктов в корзине
+        private Client cl;
 
         public ShowBasket()
         {
@@ -149,6 +150,12 @@ namespace PizzaHP.ViewModels
             set
             {
                 phoneNumber = value;
+                cl = db.Client.Where(i => i.PhoneNumber == PhoneNumber).FirstOrDefault();
+                if(cl != null)
+                {
+                    FIO = cl.FIO;
+                    Email = cl.Email;
+                }
                 OnPropertyChanged("PhoneNumber");
             }
         }
@@ -181,7 +188,7 @@ namespace PizzaHP.ViewModels
             }
         }
 
-        private RelayCommand orderService;
+        private RelayCommand orderService;      //Оформить заказ
         public RelayCommand OrderService
         {
             get
@@ -189,13 +196,16 @@ namespace PizzaHP.ViewModels
                 return orderService ??
                 (orderService = new RelayCommand(obj =>
                 {
-                    Client cl = new Client
+                    if (cl == null)
                     {
-                        FIO = fio,
-                        PhoneNumber = phoneNumber,
-                        Email = email
-                    };
-                    db.Client.Add(cl);
+                        cl = new Client
+                        {
+                            FIO = fio,
+                            PhoneNumber = phoneNumber,
+                            Email = email
+                        };
+                        db.Client.Add(cl);
+                    }
 
                     Random rand = new Random();
                     Order order = new Order

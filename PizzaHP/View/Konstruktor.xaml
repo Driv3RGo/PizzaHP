@@ -71,8 +71,8 @@
 					<TextBlock Text="{Binding Path=Sum}" FontSize="20" FontWeight="Bold" Background="Transparent"/>
 					<TextBlock Text=" ₽" FontSize="20" FontWeight="Bold" Background="Transparent"/>
 				</StackPanel>
-				<Button FontSize="20" Background="{x:Null}" FontWeight="Bold" BorderBrush="{x:Null}" Margin="0,4,0,0">
-					<Border Margin="3" BorderThickness="1" CornerRadius="20" Background="#FFFF6E00">
+				<Button Command="{Binding Path=AddCommand}" FontSize="20" Background="{x:Null}" FontWeight="Bold" BorderBrush="{x:Null}">
+					<Border BorderThickness="1" CornerRadius="20" Background="#FFFF6E00">
 						<TextBlock Padding="30,5,30,5" Text="В корзину" Foreground="White"/>
 					</Border>
 				</Button>
@@ -90,43 +90,43 @@
 					<ColumnDefinition></ColumnDefinition>
 					<ColumnDefinition></ColumnDefinition>
 				</Grid.ColumnDefinitions>
-				<Button Command="{Binding Path=FilterCommand}" CommandParameter="{Binding Path=Sous}" Grid.Column="0" BorderBrush="Black">
+				<Button Command="{Binding Path=FilterCommand}" CommandParameter="2" Grid.Column="0" BorderBrush="Black">
 					<StackPanel>
 						<Image Stretch="Fill" Height="45" Width="50" Source="/PizzaHP;component/icons/konstruktor/Соус.png"/>
 						<TextBlock Text="Соус" Margin="0,0,0,0" Foreground="Black" FontSize="14" FontWeight="Bold" TextAlignment="Center"/>
 					</StackPanel>
 				</Button>
-				<Button Command="{Binding Path=FilterCommand}" CommandParameter="{Binding Path=Cheese}" Grid.Column="1" BorderBrush="Black">
+				<Button Command="{Binding Path=FilterCommand}" CommandParameter="3" Grid.Column="1" BorderBrush="Black">
 					<StackPanel>
 						<Image Stretch="Fill" Height="45" Width="50" Source="/PizzaHP;component/icons/konstruktor/Сыр.png"/>
 						<TextBlock Text="Сыр" Margin="0,0,0,0" Foreground="Black" FontSize="14" FontWeight="Bold" TextAlignment="Center"/>
 					</StackPanel>
 				</Button>
-				<Button Command="{Binding Path=FilterCommand}" CommandParameter="{Binding Path=Meat}" Grid.Column="2" BorderBrush="Black">
+				<Button Command="{Binding Path=FilterCommand}" CommandParameter="4" Grid.Column="2" BorderBrush="Black">
 					<StackPanel>
 						<Image Stretch="Fill" Height="45" Width="50" Source="/PizzaHP;component/icons/konstruktor/Мясо.png"/>
 						<TextBlock Text="Мясо" Margin="0,0,0,0" Foreground="Black" FontSize="14" FontWeight="Bold" TextAlignment="Center"/>
 					</StackPanel>
 				</Button>
-				<Button Command="{Binding Path=FilterCommand}" CommandParameter="{Binding Path=Fish}" Grid.Column="3" BorderBrush="Black">
+				<Button Command="{Binding Path=FilterCommand}" CommandParameter="5" Grid.Column="3" BorderBrush="Black">
 					<StackPanel>
 						<Image Stretch="Fill" Height="45" Width="50" Source="/PizzaHP;component/icons/konstruktor/Рыба.png"/>
 						<TextBlock Text="Рыба" Margin="0,0,0,0" Foreground="Black" FontSize="14" FontWeight="Bold" TextAlignment="Center"/>
 					</StackPanel>
 				</Button>
-				<Button Command="{Binding Path=FilterCommand}" CommandParameter="{Binding Path=Grib}" Grid.Column="4" BorderBrush="Black">
+				<Button Command="{Binding Path=FilterCommand}" CommandParameter="6" Grid.Column="4" BorderBrush="Black">
 					<StackPanel>
 						<Image Stretch="Fill" Height="45" Width="50" Source="/PizzaHP;component/icons/konstruktor/Гриб.png"/>
 						<TextBlock Text="Грибы" Margin="0,0,0,0" Foreground="Black" FontSize="14" FontWeight="Bold" TextAlignment="Center"/>
 					</StackPanel>
 				</Button>
-				<Button Command="{Binding Path=FilterCommand}" CommandParameter="{Binding Path=Tomato}" Grid.Column="5" BorderBrush="Black">
+				<Button Command="{Binding Path=FilterCommand}" CommandParameter="7" Grid.Column="5" BorderBrush="Black">
 					<StackPanel>
 						<Image Stretch="Fill" Height="45" Width="50" Source="/PizzaHP;component/icons/konstruktor/Овощи.png"/>
 						<TextBlock Text="Овощи" Margin="0,0,0,0" Foreground="Black" FontSize="14" FontWeight="Bold" TextAlignment="Center"/>
 					</StackPanel>
 				</Button>
-				<Button Command="{Binding Path=FilterCommand}" CommandParameter="{Binding Path=Salt}" Grid.Column="6" BorderBrush="Black">
+				<Button Command="{Binding Path=FilterCommand}" CommandParameter="8" Grid.Column="6" BorderBrush="Black">
 					<StackPanel>
 						<Image Stretch="Fill" Height="45" Width="50" Source="/PizzaHP;component/icons/konstruktor/Специи.png"/>
 						<TextBlock Text="Специи" Margin="0,0,0,0" Foreground="Black" FontSize="14" FontWeight="Bold" TextAlignment="Center"/>
@@ -145,6 +145,9 @@
 				<ListBox.ItemTemplate>
 					<DataTemplate>
 						<Border x:Name="Border" BorderThickness="2" BorderBrush="#FFFF4900" CornerRadius="10">
+							<Border.Background>
+								<SolidColorBrush Color="{Binding Path=Color}" Opacity="0.2"/>
+							</Border.Background>
 							<StackPanel Width="190">
 								<Image Height="100" Width="100" Source="{Binding Path=Picture}"/>
 								<TextBlock Text="{Binding Path=Name}" FontSize="14" FontWeight="Bold" HorizontalAlignment="Center" TextWrapping="Wrap"/>

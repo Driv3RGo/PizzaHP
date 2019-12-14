@@ -13,14 +13,12 @@ namespace PizzaHP.ViewModels
 {
     public class ReportViewModel : ViewModelBase
     {
-        private Page order;     //Страница заказы
         private Page client;    //Страница клиенты
         private Page ing;       //Страница ингредиенты
         private Page otchet;    //Страница отчёт
 
         PizzaContext db;
         ReportModel report;
-        public List<OrderViewModel> Orders { get; set; }                    //заказы
         public ObservableCollection<Client> Clients { get; set; }           //клиенты
 
         private ObservableCollection<Ingredient> ingredients;       //ингредиенты
@@ -41,7 +39,6 @@ namespace PizzaHP.ViewModels
 
         public ReportViewModel()
         {
-            order = new Page_Order(this);
             client = new Page_Client(this);
             ing = new Page_Ing(this);
             otchet = new Page_Otchet(this);
@@ -49,7 +46,6 @@ namespace PizzaHP.ViewModels
 
             db = new PizzaContext();
             report = new ReportModel();
-            Orders = db.Order.ToList().Select(i => new OrderViewModel(i)).ToList();
             Clients = new ObservableCollection<Client>(db.Client);
             Ingredients = new ObservableCollection<Ingredient>(db.Ingredient);
             Kategori = db.Kategori.ToList();
@@ -113,10 +109,9 @@ namespace PizzaHP.ViewModels
                 {
                     switch ((string)obj)
                     {
-                        case "1": SourcePage = order; break;
-                        case "2": SourcePage = client; break;
-                        case "3": SourcePage = ing; break;
-                        case "4": SourcePage = otchet; break;
+                        case "1": SourcePage = client; break;
+                        case "2": SourcePage = ing; break;
+                        case "3": SourcePage = otchet; break;
                     } 
                 }));
             }

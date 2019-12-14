@@ -68,7 +68,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Models\ReportModel.cs" />
-    <Compile Include="ViewModels\OrderViewModel.cs" />
+    <Compile Include="ViewModels\EntityViewModel\IngredientViewModel.cs" />
     <Compile Include="ViewModels\ReportViewModel.cs" />
     <Compile Include="View\Message.xaml.cs">
       <DependentUpon>Message.xaml</DependentUpon>
@@ -79,15 +79,16 @@
     <Compile Include="View\Personal\Page_Ing.xaml.cs">
       <DependentUpon>Page_Ing.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Personal\Page_Order.xaml.cs">
-      <DependentUpon>Page_Order.xaml</DependentUpon>
-    </Compile>
     <Compile Include="View\Personal\Page_Otchet.xaml.cs">
       <DependentUpon>Page_Otchet.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Page_Report.xaml.cs">
       <DependentUpon>Page_Report.xaml</DependentUpon>
     </Compile>
+    <Page Include="Style\Scroll.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\LoginScreen.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -113,8 +114,8 @@
     <Compile Include="Help\RelayCommand.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
     <Compile Include="ViewModels\BuildingPizza.cs" />
-    <Compile Include="ViewModels\ImageViewModel.cs" />
-    <Compile Include="ViewModels\ProductViewModel.cs" />
+    <Compile Include="ViewModels\EntityViewModel\ImageViewModel.cs" />
+    <Compile Include="ViewModels\EntityViewModel\ProductViewModel.cs" />
     <Compile Include="ViewModels\ShowBasket.cs" />
     <Compile Include="ViewModels\ShowPizza.cs" />
     <Compile Include="View\LoginScreen.xaml.cs">
@@ -145,10 +146,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Personal\Page_Ing.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\Personal\Page_Order.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
