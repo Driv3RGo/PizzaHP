@@ -160,6 +160,13 @@ namespace PizzaHP.ViewModels
             }
         }
 
+        private string color = "#FF000000";       //Обводка текстового поля с номером телефона
+        public string Color
+        {
+            get { return color; }
+            set { color = value; OnPropertyChanged("Color"); }
+        }
+
         private string email = "";        //Почти клиента
         public string Email
         {
@@ -188,6 +195,13 @@ namespace PizzaHP.ViewModels
             }
         }
 
+        private bool proverka()         //Проверка правильности номера телефона
+        {
+            if (phoneNumber[0] == '8' && phoneNumber[1] == '(' && phoneNumber[5] == ')' && phoneNumber[9] == '-' && phoneNumber[12] == '-')
+                return true;
+            else return false;
+        }
+
         private RelayCommand orderService;      //Оформить заказ
         public RelayCommand OrderService
         {
@@ -196,52 +210,61 @@ namespace PizzaHP.ViewModels
                 return orderService ??
                 (orderService = new RelayCommand(obj =>
                 {
-                    if (cl == null)
+                    if (proverka())
                     {
-                        cl = new Client
+                        if (cl == null)
                         {
-                            FIO = fio,
-                            PhoneNumber = phoneNumber,
-                            Email = email
-                        };
-                        db.Client.Add(cl);
-                    }
+                            cl = new Client
+                            {
+                                FIO = fio,
+                                PhoneNumber = phoneNumber,
+                                Email = email
+                            };
+                            db.Client.Add(cl);
+                        }
 
-                    Random rand = new Random();
-                    Order order = new Order
-                    {
-                        Client_FK = cl.ClientID,
-                        Address = address,
-                        DataBegin = DateTime.Now,
-                        DataEnd = DateTime.Now.AddHours(rand.Next(1,3)).AddMinutes(rand.Next(50)),
-                        Status_FK = 1,
-                        Cost = sum,
-                    };
-                    db.Order.Add(order);
-
-                    foreach (var pId in ProductID)
-                    {
-                        Order_line ol = new Order_line
+                        Random rand = new Random();
+                        Order order = new Order
                         {
-                            Order_FK = order.OrderID,
-                            Product_FK = pId,
-                            Count = 1,                   
+                            Client_FK = cl.ClientID,
+                            Address = address,
+                            DataBegin = DateTime.Now,
+                            DataEnd = DateTime.Now.AddHours(rand.Next(1, 3)).AddMinutes(rand.Next(50)),
+                            Status_FK = 1,
+                            Cost = sum,
                         };
-                        db.Order_line.Add(ol);
+                        db.Order.Add(order);
+
+                        foreach (var pId in ProductID)
+                        {
+                            Order_line ol = new Order_line
+                            {
+                                Order_FK = order.OrderID,
+                                Product_FK = pId,
+                                Count = 1,
+                            };
+                            db.Order_line.Add(ol);
+                        }
+                        if (Save())
+                        {
+                            Sum = 0;
+                            FIO = "";
+                            PhoneNumber = "";
+                            Color = "#FF000000";
+                            Email = "";
+                            Address = "";
+                            AllProduct.Clear();
+                            ProductID.Clear();
+                            GridOpacity1 = 0.0;
+                            GridOpacity2 = 1.0;
+                            DisplayName = "Ваш заказ оформлен";
+                            DisplayName = "Ожидайте звонка";
+                        }
                     }
-                    if (Save())
+                    else
                     {
-                        Sum = 0;
-                        FIO = "";
-                        PhoneNumber = "";
-                        Email = "";
-                        Address = "";
-                        AllProduct.Clear();
-                        ProductID.Clear();
-                        GridOpacity1 = 0.0;
-                        GridOpacity2 = 1.0;
-                        DisplayName = "Ваш заказ оформлен";
-                        DisplayName = "Ожидайте звонка";
+                        Color = "#FFFF0000";
+                        DisplayName = "Проверьте номер телефона";    
                     }
                 },
                 (obj) => FIO != "" && PhoneNumber != "" && Email != "" && Address != ""));  //условие, при котором будет доступна команда

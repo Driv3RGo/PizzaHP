@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PizzaHP.View"
         mc:Ignorable="d" MouseLeftButtonDown="Window_MouseLeftButtonDown"
-         Title="Login" Height="319" Width="300" FontSize="14" Background="#FFF4A01B" HorizontalContentAlignment="Center" WindowStyle="None">
+         Title="Login" Height="319" Width="300" FontSize="14" Background="#FFF4A01B" HorizontalContentAlignment="Center" WindowStyle="None" AllowsTransparency="True" WindowStartupLocation="CenterOwner">
 	<Grid>
 		<Grid.ColumnDefinitions>
 			<ColumnDefinition/>
@@ -21,10 +21,10 @@
 				<Label Content="Login" Foreground="White" FontSize="25" HorizontalAlignment="Center"/>
 				<Separator/>
 				<Label Content="Username" Foreground="White"/>
-				<TextBox Name="txtUsername" Foreground="White" FontSize="18" Background="#FF545D6A"/>
+				<TextBox Text="{Binding Path=Login, Mode=TwoWay}" Foreground="White" FontSize="18" Background="#FF545D6A"/>
 				<Label Content="Password" Foreground="White"/>
-				<PasswordBox Name="txtPassword" Background="#545d6a" Foreground="White" FontSize="18"/>
-				<Button Name="Enter" Content="Enter" Margin="60 10" Background="#545d6a" Foreground="White" FontSize="18"/>
+				<PasswordBox x:Name="PasswordBox" Background="#545d6a" Foreground="White" FontSize="18"/>
+				<Button Command="{Binding SigninCommand}" CommandParameter="{Binding ElementName=PasswordBox}" IsDefault="True" Content="Enter" Margin="60 10" Background="#545d6a" Foreground="White" FontSize="18"/>
 			</StackPanel>
 		</Border>
 	</Grid>

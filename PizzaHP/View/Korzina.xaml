@@ -70,22 +70,31 @@
 					</Grid.RowDefinitions>
 					<TextBlock Grid.Row="0" Text="Ваши данные" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="36" FontWeight="Bold" Height="48" Margin="136,8,136,7.2" Width="240"/>
 					<Separator Grid.Row="0" Background="Black" VerticalAlignment="Bottom" Height="2"/>
-					<Grid Grid.Row="1" VerticalAlignment="Center">
-						<TextBlock Margin="4,0,0,0" Text="Телефон:" FontSize="20" FontWeight="Bold"/>
-						<TextBox Text="{Binding Path=PhoneNumber, Mode=TwoWay}" FontSize="16" Background="{x:Null}" BorderBrush="Black" Width="320" FontStyle="Italic" BorderThickness="2" MaxLength="15" Margin="25,0,0,0" ToolTip="8(999)999-99-99"/>
-					</Grid>
-					<Grid Grid.Row="2" VerticalAlignment="Center" Height="26">
-						<TextBlock Margin="29,0,0,0" Text="Адрес:" FontSize="20" FontWeight="Bold"/>
-						<TextBox Text="{Binding Path=Address, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontSize="16" Background="{x:Null}" BorderBrush="Black" Width="320" FontStyle="Italic" BorderThickness="2" MaxLength="240" Margin="25,0,0,0"/>
-					</Grid>
-					<Grid Grid.Row="3" VerticalAlignment="Center">
-						<TextBlock Margin="40,0,0,0" Text="ФИО:" FontSize="20" FontWeight="Bold"/>
-						<TextBox Text="{Binding Path=FIO, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontSize="16" Background="{x:Null}" BorderBrush="Black" Width="320" FontStyle="Italic" BorderThickness="2" MaxLength="90" Margin="25,0,0,0" ToolTip="Иванов Иван Иванович"/>
-					</Grid>
-					<Grid Grid.Row="4" VerticalAlignment="Center">
-						<TextBlock Margin="29,0,0,0" Text="Почта:" FontSize="20" FontWeight="Bold"/>
-						<TextBox Text="{Binding Path=Email, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontSize="16" Background="{x:Null}" BorderBrush="Black" Width="320" FontStyle="Italic" BorderThickness="2" MaxLength="90" Margin="25,0,0,0" ToolTip="primer@yandex.ru"/>
-					</Grid>
+					<StackPanel Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Center">
+						<TextBlock Text="Телефон:" FontSize="20" FontWeight="Bold" Width="100"/>
+						<StackPanel>
+							<TextBox Text="{Binding PhoneNumber, Mode=TwoWay}" FontSize="16" Background="{x:Null}" Width="320" FontWeight="Bold" BorderThickness="2" MaxLength="15" ToolTip="8(999)999-99-99" BorderBrush="{Binding Path=Color}"/>
+							<Label Content="Пример: 8(999)999-99-99" FontWeight="Bold" FontFamily="Century Gothic" FontSize="12" Background="{x:Null}" Foreground="#FF4F4C4C" VerticalAlignment="Bottom"/>
+						</StackPanel>
+					</StackPanel>
+					<StackPanel Grid.Row="2" Orientation="Horizontal" VerticalAlignment="Center">
+						<TextBlock Text="Адрес:" FontSize="20" FontWeight="Bold" Width="100"/>
+						<TextBox Text="{Binding Path=Address, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontSize="16" Background="{x:Null}" BorderBrush="Black" Width="320" FontWeight="Bold" BorderThickness="2" MaxLength="240"/>
+					</StackPanel>
+					<StackPanel Grid.Row="3" Orientation="Horizontal" VerticalAlignment="Center">
+						<TextBlock Text="ФИО:" FontSize="20" FontWeight="Bold" Width="100"/>
+						<StackPanel>
+							<TextBox Text="{Binding Path=FIO, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontSize="16" Background="{x:Null}" BorderBrush="Black" Width="320" FontWeight="Bold" BorderThickness="2" MaxLength="90" ToolTip="Иванов Иван Иванович"/>
+							<Label Content="Пример: Иванов Иван Иванович" FontWeight="Bold" FontFamily="Century Gothic" FontSize="12" Background="{x:Null}" Foreground="#FF4F4C4C" VerticalAlignment="Bottom"/>
+						</StackPanel>
+					</StackPanel>
+					<StackPanel Grid.Row="4" Orientation="Horizontal" VerticalAlignment="Center">
+						<TextBlock Text="Почта:" FontSize="20" FontWeight="Bold" Width="100"/>
+						<StackPanel>
+							<TextBox Text="{Binding Path=Email, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontSize="16" Background="{x:Null}" BorderBrush="Black" Width="320" FontWeight="Bold" BorderThickness="2" MaxLength="90" ToolTip="primer@yandex.ru"/>
+							<Label Content="Пример: ivanov@bk.ru" FontWeight="Bold" FontFamily="Century Gothic" FontSize="12" Background="{x:Null}" Foreground="#FF4F4C4C" VerticalAlignment="Bottom"/>
+						</StackPanel>
+					</StackPanel>
 					<Button Command="{Binding Path=OrderService}" Grid.Row="5" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" Background="{x:Null}" FontWeight="Bold" BorderBrush="{x:Null}">
 						<Border BorderThickness="1" CornerRadius="20" Background="#FFFF6E00">
 							<TextBlock Padding="40,5,40,5" Text="Оформить заказ" Foreground="White"/>

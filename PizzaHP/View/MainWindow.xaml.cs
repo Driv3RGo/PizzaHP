@@ -21,18 +21,10 @@ namespace PizzaHP.View
     /// </summary>
     public partial class MainWindow : Window
     {
-        private Page kat;
-        private Page kor;
-        private ShowBasket basket;
-
         public MainWindow()
         {
             InitializeComponent();
-            basket = new ShowBasket();
-
-            kat = new Katalog(basket);
-            kor = new Korzina(basket);
-            Navigable.Content = kat;
+            DataContext = new MainViewModel();
         }
 
         private void Grid_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -45,17 +37,11 @@ namespace PizzaHP.View
             this.Close();
         }
 
-        private void Login_Click(object sender, RoutedEventArgs e)          //Кнопка личный кабинет
-        {
-            Navigable.Content = new Page_Report();
-        }
-
         private void Katalog_Click(object sender, RoutedEventArgs e)        //Конпка каталог
         {
             Grid1.Visibility = Visibility.Visible;
             Grid2.Visibility = Visibility.Hidden;
             Grid3.Visibility = Visibility.Hidden;
-            Navigable.Content = kat;
         }
 
         private void Konstruktor_Click(object sender, RoutedEventArgs e)    //Кнопка конструктор
@@ -63,7 +49,6 @@ namespace PizzaHP.View
             Grid1.Visibility = Visibility.Hidden;
             Grid2.Visibility = Visibility.Visible;
             Grid3.Visibility = Visibility.Hidden;
-            Navigable.Content = new Konstruktor(basket);
         }
 
         private void Korzina_Click(object sender, RoutedEventArgs e)        //Кнопка корзина
@@ -71,7 +56,6 @@ namespace PizzaHP.View
             Grid1.Visibility = Visibility.Hidden;
             Grid2.Visibility = Visibility.Hidden;
             Grid3.Visibility = Visibility.Visible;
-            Navigable.Content = kor;
         }
     }
 }

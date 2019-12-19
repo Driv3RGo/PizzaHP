@@ -25,8 +25,8 @@
 				</Grid.ColumnDefinitions>
 				<Button Command="{Binding Path=FilterCommand}" CommandParameter="1" Grid.Column="0" Background="{x:Null}" BorderBrush="Black">
 					<StackPanel Orientation="Horizontal">
-						<Image Width="50" Height="50" Source="/PizzaHP;component/icons/Личный кабинет.png"/>
-						<TextBlock Text=" Клиенты" FontWeight="Bold" FontSize="20" VerticalAlignment="Center"/>
+						<Image Width="50" Height="50" Source="/PizzaHP;component/icons/Каталог.png"/>
+						<TextBlock Text=" Продукты" FontWeight="Bold" FontSize="20" VerticalAlignment="Center"/>
 					</StackPanel>
 				</Button>
 				<Button Command="{Binding Path=FilterCommand}" CommandParameter="2" Grid.Column="1" Background="{x:Null}" BorderBrush="Black">

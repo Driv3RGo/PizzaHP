@@ -13,13 +13,19 @@ namespace PizzaHP.ViewModels
 {
     public class ReportViewModel : ViewModelBase
     {
-        private Page client;    //Страница клиенты
+        private Page product;    //Страница продуктов
         private Page ing;       //Страница ингредиенты
         private Page otchet;    //Страница отчёт
 
         PizzaContext db;
-        ReportModel report;
-        public ObservableCollection<Client> Clients { get; set; }           //клиенты
+        ReportModel report;     //Отчёт
+
+        private ObservableCollection<Product> products;       //продукты
+        public ObservableCollection<Product> Products
+        {
+            get { return products; }
+            set { products = value; OnPropertyChanged("Products"); }
+        }
 
         private ObservableCollection<Ingredient> ingredients;       //ингредиенты
         public ObservableCollection<Ingredient> Ingredients
@@ -39,17 +45,17 @@ namespace PizzaHP.ViewModels
 
         public ReportViewModel()
         {
-            client = new Page_Client(this);
-            ing = new Page_Ing(this);
-            otchet = new Page_Otchet(this);
-            SourcePage = otchet;
+            product = new Page_Product(this);       //Страница продуктов 
+            ing = new Page_Ing(this);               //Страница ингредиентов
+            otchet = new Page_Otchet(this);         //Страница с отчётом
+            SourcePage = otchet;                    //Текущая страница
 
             db = new PizzaContext();
-            report = new ReportModel();
-            Clients = new ObservableCollection<Client>(db.Client);
+            report = new ReportModel();             //Отчёт
+            Products = new ObservableCollection<Product>(db.Product);
             Ingredients = new ObservableCollection<Ingredient>(db.Ingredient);
-            Kategori = db.Kategori.ToList();
-            Data = new List<Result>();
+            Kategori = db.Kategori.ToList();        //Заполнение комбобокса в ингредиентах
+            Data = new List<Result>();              //Результат отчёта
         }
 
         private DateTime date_Start = DateTime.Now;           //Начальная дата
@@ -87,7 +93,14 @@ namespace PizzaHP.ViewModels
             set { sum = value; OnPropertyChanged("Sum"); }
         }
 
-        private Ingredient selecteding = null;       //Выбранный продукт
+        private Product selectedproduct = null;       //Выбранный продукт
+        public Product SelectedProduct
+        {
+            get { return selectedproduct; }
+            set { selectedproduct = value; OnPropertyChanged("SelectedProduct"); }
+        }
+
+        private Ingredient selecteding = null;       //Выбранный ингредиент
         public Ingredient SelectedIng
         {
             get { return selecteding; }
@@ -109,13 +122,32 @@ namespace PizzaHP.ViewModels
                 {
                     switch ((string)obj)
                     {
-                        case "1": SourcePage = client; break;
+                        case "1": SourcePage = product; break;
                         case "2": SourcePage = ing; break;
                         case "3": SourcePage = otchet; break;
                     } 
                 }));
             }
-        }   
+        }
+
+        private RelayCommand ddeleteCommand;     //Удалить продукт из БД
+        public RelayCommand DDeleteCommand
+        {
+            get
+            {
+                return ddeleteCommand ??
+                (ddeleteCommand = new RelayCommand(obj =>
+                {
+                    Product pr = db.Product.Find(selectedproduct.ProductID);
+                    if (ing != null)
+                    {
+                        products.Remove(pr);
+                        Products = Products;
+                    }
+                },
+                (obj) => selectedproduct != null));  //условие, при котором будет доступна команда
+            }
+        }
 
         private RelayCommand deleteCommand;     //Удалить ингредиент из БД
         public RelayCommand DeleteCommand
@@ -146,7 +178,7 @@ namespace PizzaHP.ViewModels
                 {
                     db.SaveChanges();
                 },
-                (obj) => selecteding != null));  //условие, при котором будет доступна команда
+                (obj) => selecteding != null || selectedproduct != null));  //условие, при котором будет доступна команда
             }
         }
 

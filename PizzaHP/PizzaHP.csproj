@@ -68,13 +68,20 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Models\ReportModel.cs" />
+    <Compile Include="ViewModels\EntityViewModel\ClientViewModel.cs" />
     <Compile Include="ViewModels\EntityViewModel\IngredientViewModel.cs" />
+    <Compile Include="ViewModels\Find_Order.cs" />
+    <Compile Include="ViewModels\MainViewModel.cs" />
+    <Compile Include="ViewModels\EntityViewModel\OrderViewModel.cs" />
     <Compile Include="ViewModels\ReportViewModel.cs" />
     <Compile Include="View\Message.xaml.cs">
       <DependentUpon>Message.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Personal\Page_Client.xaml.cs">
-      <DependentUpon>Page_Client.xaml</DependentUpon>
+    <Compile Include="View\Page_Order.xaml.cs">
+      <DependentUpon>Page_Order.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Personal\Page_Product.xaml.cs">
+      <DependentUpon>Page_Product.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Personal\Page_Ing.xaml.cs">
       <DependentUpon>Page_Ing.xaml</DependentUpon>
@@ -141,7 +148,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Personal\Page_Client.xaml">
+    <Page Include="View\Page_Order.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Personal\Page_Product.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

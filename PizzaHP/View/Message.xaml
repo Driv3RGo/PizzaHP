@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:PizzaHP.View"
         mc:Ignorable="d"
         Title="Message" Height="130" Width="300" WindowStyle="None" Background="{x:Null}" AllowsTransparency="True" WindowStartupLocation="CenterOwner">
-	<Border Grid.Row="1" Background="#2e3137" CornerRadius="50" Margin="10" Grid.ColumnSpan="2">
+	<Border Grid.Row="1" Background="#2e3137" CornerRadius="50" Margin="10" Grid.ColumnSpan="2" BorderBrush="Black" BorderThickness="2">
 		<StackPanel Margin="20">
 			<Separator Margin="0,10,0,0"/>
 			<TextBlock Margin="0,10,0,10" Text="{Binding Path=DisplayName}" Foreground="White" FontSize="16" HorizontalAlignment="Center" TextWrapping="Wrap"/>

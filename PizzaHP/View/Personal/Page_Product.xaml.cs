@@ -17,11 +17,11 @@ using PizzaHP.ViewModels;
 namespace PizzaHP.View
 {
     /// <summary>
-    /// Логика взаимодействия для Page_Client.xaml
+    /// Логика взаимодействия для Page_Product.xaml
     /// </summary>
-    public partial class Page_Client : Page
+    public partial class Page_Product : Page
     {
-        public Page_Client(ReportViewModel report)
+        public Page_Product(ReportViewModel report)
         {
             InitializeComponent();
             DataContext = report;

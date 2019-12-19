@@ -146,16 +146,7 @@ namespace PizzaHP.ViewModels
             {
                 return new RelayCommand((obj =>
                 {
-                    switch((string)obj)
-                    {
-                        case "2": AllIngredient = ing.Where(i => i.Kategori_FK == 2).ToList(); break;
-                        case "3": AllIngredient = ing.Where(i => i.Kategori_FK == 3).ToList(); break;
-                        case "4": AllIngredient = ing.Where(i => i.Kategori_FK == 4).ToList(); break;
-                        case "5": AllIngredient = ing.Where(i => i.Kategori_FK == 5).ToList(); break;
-                        case "6": AllIngredient = ing.Where(i => i.Kategori_FK == 6).ToList(); break;
-                        case "7": AllIngredient = ing.Where(i => i.Kategori_FK == 7).ToList(); break;
-                        case "8": AllIngredient = ing.Where(i => i.Kategori_FK == 8).ToList(); break;
-                    }
+                    AllIngredient = ing.Where(i => i.Kategori_FK == Convert.ToInt32((string)obj)).ToList();
                 }));
             }
         }

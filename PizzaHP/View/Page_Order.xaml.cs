@@ -10,30 +10,21 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 using PizzaHP.ViewModels;
 
 namespace PizzaHP.View
 {
     /// <summary>
-    /// Логика взаимодействия для LoginScreen.xaml
+    /// Логика взаимодействия для Page_Order.xaml
     /// </summary>
-    public partial class LoginScreen : Window
+    public partial class Page_Order : Page
     {
-        public LoginScreen(MainViewModel mvm)
+        public Page_Order()
         {
             InitializeComponent();
-            DataContext = mvm;
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)     //Кнопка закрыть
-        {
-            this.Close();
-        }
-
-        private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            this.DragMove();
+            DataContext = new Find_Order();
         }
     }
 }
