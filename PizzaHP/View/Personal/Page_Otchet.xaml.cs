@@ -26,5 +26,14 @@ namespace PizzaHP.View
             InitializeComponent();
             DataContext = report;
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            PrintDialog printDialog = new PrintDialog();
+            if (printDialog.ShowDialog() == true)
+            {
+                printDialog.PrintVisual(grid, "Распечатываем отчёт");
+            }
+        }
     }
 }

@@ -6,26 +6,28 @@
         xmlns:local="clr-namespace:PizzaHP.View"
         mc:Ignorable="d" MouseLeftButtonDown="Window_MouseLeftButtonDown"
          Title="Login" Height="319" Width="300" FontSize="14" Background="#FFF4A01B" HorizontalContentAlignment="Center" WindowStyle="None" AllowsTransparency="True" WindowStartupLocation="CenterOwner">
-	<Grid>
-		<Grid.ColumnDefinitions>
-			<ColumnDefinition/>
-			<ColumnDefinition Width="26"/>
-		</Grid.ColumnDefinitions>
-		<Grid.RowDefinitions>
-			<RowDefinition Height="26"></RowDefinition>
-			<RowDefinition/>
-		</Grid.RowDefinitions>
-		<Button Grid.Column="1" Content="X" FontSize="20" FontWeight="Bold" FontFamily="Century Gothic" Background="{x:Null}" BorderBrush="White" Foreground="White" Click="Button_Click"/>
-		<Border Grid.Row="1" Background="#2e3137" CornerRadius="20" Margin="20,20.2,19.6,19.8" Grid.ColumnSpan="2">
-			<StackPanel Margin="20">
-				<Label Content="Login" Foreground="White" FontSize="25" HorizontalAlignment="Center"/>
-				<Separator/>
-				<Label Content="Username" Foreground="White"/>
-				<TextBox Text="{Binding Path=Login, Mode=TwoWay}" Foreground="White" FontSize="18" Background="#FF545D6A"/>
-				<Label Content="Password" Foreground="White"/>
-				<PasswordBox x:Name="PasswordBox" Background="#545d6a" Foreground="White" FontSize="18"/>
-				<Button Command="{Binding SigninCommand}" CommandParameter="{Binding ElementName=PasswordBox}" IsDefault="True" Content="Enter" Margin="60 10" Background="#545d6a" Foreground="White" FontSize="18"/>
-			</StackPanel>
-		</Border>
-	</Grid>
+	<Border BorderThickness="2" BorderBrush="Black">
+		<Grid>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition/>
+				<ColumnDefinition Width="26"/>
+			</Grid.ColumnDefinitions>
+			<Grid.RowDefinitions>
+				<RowDefinition Height="26"/>
+				<RowDefinition/>
+			</Grid.RowDefinitions>
+			<Button Grid.Column="1" Content="X" FontSize="20" FontWeight="Bold" FontFamily="Century Gothic" Background="{x:Null}" BorderBrush="White" Foreground="White" Click="Button_Click"/>
+			<Border Grid.Row="1" Background="#2e3137" CornerRadius="20" Margin="20,20.2,19.6,19.8" Grid.ColumnSpan="2">
+				<StackPanel Margin="20">
+					<Label Content="Login" Foreground="White" FontSize="25" HorizontalAlignment="Center"/>
+					<Separator/>
+					<Label Content="Username" Foreground="White"/>
+					<TextBox Text="{Binding Path=Login, Mode=TwoWay}" Foreground="White" FontSize="18" Background="#FF545D6A"/>
+					<Label Content="Password" Foreground="White"/>
+					<PasswordBox x:Name="PasswordBox" Background="#545d6a" Foreground="White" FontSize="18"/>
+					<Button Command="{Binding SigninCommand}" CommandParameter="{Binding ElementName=PasswordBox}" IsDefault="True" Content="Enter" Margin="60 10" Background="#545d6a" Foreground="White" FontSize="18"/>
+				</StackPanel>
+			</Border>
+		</Grid>
+	</Border>
 </Window>

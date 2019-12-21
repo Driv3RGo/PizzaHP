@@ -8,7 +8,7 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Page_Otchet">
 
-    <Grid Background="White">
+    <Grid x:Name="grid" Background="White">
 		<Grid>
 			<Grid.Background>
 				<ImageBrush ImageSource="/PizzaHP;component/icons/Фон.jpg" Opacity="0.3"/>
@@ -68,6 +68,14 @@
 					<Label Content=" ₽" FontSize="16" FontFamily="Arial Rounded MT Bold" Background="Transparent" BorderBrush="Black" VerticalAlignment="Center"/>
 				</StackPanel>
 			</StackPanel>
+			<Button Grid.Row="5" Grid.Column="5" HorizontalAlignment="Center" VerticalAlignment="Center" Background="{x:Null}" BorderBrush="{x:Null}" Click="Button_Click">
+				<Border CornerRadius="5" Margin="2" Padding="10,0,10,0" BorderThickness="2" Background="#FFFF8900" BorderBrush="Black">
+					<StackPanel Orientation="Horizontal">
+						<TextBlock Text="Печать " FontWeight="Bold" FontSize="14"/>
+						<Image Height="20" Width="20" Source="/PizzaHP;component/icons/Принтер.png"/>
+					</StackPanel>
+				</Border>
+			</Button>
 		</Grid>
 	</Grid>
 </Page>
